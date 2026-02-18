@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gerador de Dados Estruturados</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0ea5e9",
+                        "background-light": "#13202b",
+                        "background-dark": "#0a1219",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .code-syntax-key { color: #60a5fa; }
+        .code-syntax-string { color: #34d399; }
+        .code-syntax-number { color: #fbbf24; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col font-display">
+<!-- Header Section -->
+<header class="sticky top-0 z-10 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="max-w-5xl mx-auto px-4 h-16 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-primary/10 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary text-2xl">data_object</span>
+</div>
+<h1 class="text-lg font-bold tracking-tight">Gerador de Dados Estruturados</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
+<span class="material-symbols-outlined">help_outline</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-5xl mx-auto w-full px-4 py-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Configuration Column -->
+<section class="lg:col-span-5 space-y-6">
+<div>
+<h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">settings</span>
+                        Configurações do Schema
+                    </h2>
+<div class="space-y-4">
+<!-- Schema Type Selector -->
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Tipo de Schema</label>
+<div class="relative">
+<select class="w-full appearance-none bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3 pr-10 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all">
+<option value="product">Product (Produto)</option>
+<option value="faq">FAQ Page</option>
+<option value="review">Review (Avaliação)</option>
+<option value="organization">Organization</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">expand_more</span>
+</div>
+</div>
+<!-- Product Specific Inputs -->
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Preço</label>
+<input class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" placeholder="Ex: 299.90" type="text" value="299.90"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Moeda</label>
+<input class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" placeholder="BRL" type="text" value="BRL"/>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Disponibilidade</label>
+<select class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all">
+<option>InStock</option>
+<option>OutOfStock</option>
+<option>PreOrder</option>
+</select>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">SKU</label>
+<input class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" placeholder="Ex: PROD-001" type="text" value="SKU-99221"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Avaliação (1-5)</label>
+<input class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" max="5" min="1" step="0.1" type="number" value="4.8"/>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="pt-4 space-y-3">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-4 rounded-lg flex items-center justify-center gap-2 transition-all shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">verified_user</span>
+                        Validar JSON-LD
+                    </button>
+<button class="w-full bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold py-4 rounded-lg flex items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined">content_copy</span>
+                        Copiar Código
+                    </button>
+</div>
+</section>
+<!-- Preview Column -->
+<section class="lg:col-span-7 flex flex-col">
+<div class="flex items-center justify-between mb-4">
+<h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">code</span>
+                        Preview JSON-LD
+                    </h2>
+<div class="flex gap-2">
+<span class="size-3 rounded-full bg-red-500/50"></span>
+<span class="size-3 rounded-full bg-amber-500/50"></span>
+<span class="size-3 rounded-full bg-emerald-500/50"></span>
+</div>
+</div>
+<div class="relative group flex-1">
+<div class="absolute inset-0 bg-primary/5 rounded-xl blur-xl group-hover:bg-primary/10 transition-all"></div>
+<div class="relative bg-[#0a1219] border border-slate-800 rounded-xl overflow-hidden h-full min-h-[400px] flex flex-col">
+<div class="flex items-center gap-2 px-4 py-2 border-b border-slate-800 bg-slate-900/50">
+<span class="text-xs font-mono text-slate-500">json-ld.preview</span>
+</div>
+<pre class="p-6 font-mono text-sm overflow-auto leading-relaxed"><code class="block">
+<span class="text-slate-400">{</span>
+  <span class="code-syntax-key">"@context"</span>: <span class="code-syntax-string">"https://schema.org/"</span>,
+  <span class="code-syntax-key">"@type"</span>: <span class="code-syntax-string">"Product"</span>,
+  <span class="code-syntax-key">"name"</span>: <span class="code-syntax-string">"Smartphone Ultra Vision Z"</span>,
+  <span class="code-syntax-key">"image"</span>: <span class="code-syntax-string">"https://example.com/photo.jpg"</span>,
+  <span class="code-syntax-key">"description"</span>: <span class="code-syntax-string">"O melhor smartphone para SEOs."</span>,
+  <span class="code-syntax-key">"sku"</span>: <span class="code-syntax-string">"SKU-99221"</span>,
+  <span class="code-syntax-key">"offers"</span>: <span class="text-slate-400">{</span>
+    <span class="code-syntax-key">"@type"</span>: <span class="code-syntax-string">"Offer"</span>,
+    <span class="code-syntax-key">"priceCurrency"</span>: <span class="code-syntax-string">"BRL"</span>,
+    <span class="code-syntax-key">"price"</span>: <span class="code-syntax-number">299.90</span>,
+    <span class="code-syntax-key">"availability"</span>: <span class="code-syntax-string">"https://schema.org/InStock"</span>
+  <span class="text-slate-400">}</span>,
+  <span class="code-syntax-key">"aggregateRating"</span>: <span class="text-slate-400">{</span>
+    <span class="code-syntax-key">"@type"</span>: <span class="code-syntax-string">"AggregateRating"</span>,
+    <span class="code-syntax-key">"ratingValue"</span>: <span class="code-syntax-number">4.8</span>,
+    <span class="code-syntax-key">"reviewCount"</span>: <span class="code-syntax-number">89</span>
+  <span class="text-slate-400">}</span>
+<span class="text-slate-400">}</span>
+</code>
+                        </pre>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation (Mobile Component) -->
+<nav class="lg:hidden sticky bottom-0 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 pb-4 pt-2">
+<div class="flex justify-around items-center max-w-md mx-auto">
+<a class="flex flex-col items-center gap-1 p-2 text-primary" href="#">
+<span class="material-symbols-outlined fill-1">edit_document</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Gerador</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-slate-400" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Histórico</span>
+</a>
+<a class="flex flex-col items-center gap-1 p-2 text-slate-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Ajustes</span>
+</a>
+</div>
+</nav>
+</body></html>

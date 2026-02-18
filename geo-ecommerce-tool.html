@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html class="dark" lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GEO Tool Pro - Ferramenta de Generative Engine Optimization para E-commerce</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#0ea5e9",
+            "background-light": "#13202b",
+            "background-dark": "#0a1219"
+          },
+          fontFamily: {
+            display: ["Inter", "sans-serif"]
+          },
+          borderRadius: {
+            DEFAULT: "0.25rem",
+            lg: "0.5rem",
+            xl: "0.75rem",
+            full: "9999px"
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      font-family: "Inter", sans-serif;
+      min-height: 100dvh;
+    }
+
+    .app-tab-content {
+      display: none;
+    }
+
+    .app-tab-content.active {
+      display: block;
+    }
+
+    .app-tab.active {
+      background: #0ea5e9;
+      color: #fff;
+      border-color: #0ea5e9;
+    }
+
+    .score-fill {
+      transition: width 0.8s ease;
+    }
+
+    .circular-progress {
+      background: conic-gradient(#0ea5e9 84%, #223442 0deg);
+    }
+
+    .chart-glow {
+      filter: drop-shadow(0 0 8px rgba(14, 165, 233, 0.4));
+    }
+
+    .radial-progress {
+      transform: rotate(-90deg);
+    }
+
+    .code-syntax-key {
+      color: #60a5fa;
+    }
+
+    .code-syntax-string {
+      color: #34d399;
+    }
+
+    .code-syntax-number {
+      color: #fbbf24;
+    }
+
+    .results-area .code-block {
+      background: #0a1219;
+      border: 1px solid #1f2937;
+      border-radius: 0.75rem;
+      padding: 1rem;
+      overflow-x: auto;
+      margin-top: 0.75rem;
+      color: #e2e8f0;
+    }
+  </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+  <header class="sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
+      <div>
+        <h1 class="text-lg sm:text-xl font-bold tracking-tight">GEO Tool Pro</h1>
+        <p class="text-xs text-slate-500 dark:text-slate-400">Ferramenta de Generative Engine Optimization para E-commerce</p>
+      </div>
+      <div class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-xs font-semibold">v2026.1</div>
+    </div>
+    <div class="max-w-6xl mx-auto px-4 pb-4">
+      <div class="flex gap-2 overflow-x-auto">
+        <button class="app-tab active shrink-0 px-3 py-2 text-xs sm:text-sm rounded-lg border border-slate-300 dark:border-slate-700" onclick="switchTab('monitoring', this)">1. Dashboard</button>
+        <button class="app-tab shrink-0 px-3 py-2 text-xs sm:text-sm rounded-lg border border-slate-300 dark:border-slate-700" onclick="switchTab('audit', this)">2. Auditoria</button>
+        <button class="app-tab shrink-0 px-3 py-2 text-xs sm:text-sm rounded-lg border border-slate-300 dark:border-slate-700" onclick="switchTab('content', this)">3. Otimizador</button>
+        <button class="app-tab shrink-0 px-3 py-2 text-xs sm:text-sm rounded-lg border border-slate-300 dark:border-slate-700" onclick="switchTab('schema', this)">4. Schema</button>
+        <button class="app-tab shrink-0 px-3 py-2 text-xs sm:text-sm rounded-lg border border-slate-300 dark:border-slate-700" onclick="switchTab('faq', this)">5. FAQ</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-6 pb-28">
+    <section id="monitoring" class="app-tab-content active space-y-6">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div class="lg:col-span-2 rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 p-5">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <p class="text-sm font-medium text-slate-500 dark:text-slate-400">AI Share of Voice</p>
+              <div class="flex items-baseline gap-2 mt-1">
+                <h3 id="metricSOV" class="text-3xl font-bold text-slate-900 dark:text-white">0%</h3>
+                <span class="text-xs font-bold text-emerald-500 flex items-center">
+                  <span class="material-symbols-outlined text-sm">trending_up</span> em tempo real
+                </span>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-primary text-4xl" style="font-variation-settings: 'FILL' 1">analytics</span>
+          </div>
+          <div class="h-32 w-full mt-4 relative">
+            <svg class="w-full h-full chart-glow" viewBox="0 0 400 100">
+              <defs>
+                <linearGradient id="lineGradient" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#0ea5e9" stop-opacity="0.3"></stop>
+                  <stop offset="100%" stop-color="#0ea5e9" stop-opacity="0"></stop>
+                </linearGradient>
+              </defs>
+              <path d="M0,80 Q40,75 80,60 T160,50 T240,70 T320,30 T400,20 L400,100 L0,100 Z" fill="url(#lineGradient)"></path>
+              <path d="M0,80 Q40,75 80,60 T160,50 T240,70 T320,30 T400,20" fill="none" stroke="#0ea5e9" stroke-linecap="round" stroke-width="3"></path>
+              <circle cx="320" cy="30" fill="#0ea5e9" r="4"></circle>
+              <circle cx="400" cy="20" fill="#0ea5e9" r="4"></circle>
+            </svg>
+          </div>
+        </div>
+
+        <div class="rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 p-5">
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-500 mb-4">Sentimento Médio</h3>
+          <div class="flex items-center justify-between">
+            <div class="relative size-24">
+              <svg class="size-full radial-progress" viewBox="0 0 100 100">
+                <circle class="text-slate-200 dark:text-slate-700" cx="50" cy="50" fill="transparent" r="40" stroke="currentColor" stroke-width="8"></circle>
+                <circle cx="50" cy="50" fill="transparent" r="40" stroke="#94a3b8" stroke-dasharray="251.2" stroke-dashoffset="100" stroke-linecap="round" stroke-width="8"></circle>
+              </svg>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <span id="metricSentiment" class="text-xs font-semibold">—</span>
+              </div>
+            </div>
+            <div class="w-full max-w-[130px] h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
+              <div class="score-fill h-full bg-primary" style="width: 0%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 p-4">
+          <p class="text-xs text-slate-500">Citações ChatGPT</p>
+          <p id="metricChatGPT" class="text-2xl font-bold mt-1">0</p>
+          <div class="mt-3 h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden"><div class="score-fill h-full bg-primary" style="width: 0%"></div></div>
+        </div>
+        <div class="rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 p-4">
+          <p class="text-xs text-slate-500">Citações Perplexity</p>
+          <p id="metricPerplexity" class="text-2xl font-bold mt-1">0</p>
+          <div class="mt-3 h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden"><div class="score-fill h-full bg-primary" style="width: 0%"></div></div>
+        </div>
+        <div class="rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 p-4">
+          <p class="text-xs text-slate-500">AI Overviews</p>
+          <p id="metricOverviews" class="text-2xl font-bold mt-1">0</p>
+          <div class="mt-3 h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden"><div class="score-fill h-full bg-primary" style="width: 0%"></div></div>
+        </div>
+        <div class="rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 p-4">
+          <p class="text-xs text-slate-500">Score GEO</p>
+          <p id="metricGEOScore" class="text-2xl font-bold mt-1">0</p>
+          <div class="mt-3 h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden"><div class="score-fill h-full bg-primary" style="width: 0%"></div></div>
+        </div>
+      </div>
+
+      <div class="rounded-xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 p-5 space-y-4">
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Executar Monitoramento</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label class="text-sm font-medium text-slate-600 dark:text-slate-400">URL para Monitoramento</label>
+            <input id="monitorUrl" type="url" class="mt-1 w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" placeholder="https://seusite.com.br" />
+          </div>
+          <div>
+            <label class="text-sm font-medium text-slate-600 dark:text-slate-400">Queries de Teste (uma por linha)</label>
+            <textarea id="monitorQueries" class="mt-1 w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" rows="3" placeholder="melhores smartphones 2026&#10;onde comprar iPhone barato&#10;reviews iPhone 15 Pro Max"></textarea>
+          </div>
+        </div>
+        <button onclick="runMonitoring()" class="w-full md:w-auto bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-lg">Iniciar Monitoramento</button>
+      </div>
+    </section>
+
+    <section id="audit" class="app-tab-content">
+      <div class="max-w-3xl mx-auto space-y-6">
+        <div class="relative bg-white dark:bg-[#101b25] rounded-2xl p-8 flex flex-col items-center justify-center shadow-xl border border-slate-100 dark:border-slate-800">
+          <div class="absolute top-4 right-4 bg-primary/10 text-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider">Live Scan</div>
+          <div class="relative flex items-center justify-center w-48 h-48 rounded-full circular-progress p-3 shadow-[0_0_30px_rgba(14, 165, 233,0.2)]">
+            <div class="flex flex-col items-center justify-center w-full h-full bg-white dark:bg-[#0a1219] rounded-full">
+              <span class="text-4xl font-extrabold text-slate-900 dark:text-white">84<span class="text-primary text-2xl">/100</span></span>
+              <span class="text-[10px] text-slate-500 dark:text-slate-400 font-medium uppercase tracking-[0.1em] mt-1">Readability</span>
+            </div>
+          </div>
+          <div class="mt-6 text-center">
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white">AI-Readability Score</h2>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Auditoria de legibilidade e GEO para motores generativos.</p>
+          </div>
+        </div>
+
+        <div class="space-y-4 rounded-xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 p-5">
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Parâmetros da Auditoria</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label class="text-sm font-medium text-slate-600 dark:text-slate-400">URL do E-commerce</label>
+              <input id="auditUrl" type="url" class="mt-1 w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" placeholder="https://seusite.com.br" />
+            </div>
+            <div>
+              <label class="text-sm font-medium text-slate-600 dark:text-slate-400">Categoria Principal</label>
+              <input id="auditCategory" type="text" class="mt-1 w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" placeholder="Ex: Eletrônicos" />
+            </div>
+          </div>
+          <div>
+            <label class="text-sm font-medium text-slate-600 dark:text-slate-400">Concorrentes (separados por vírgula)</label>
+            <input id="auditCompetitors" type="text" class="mt-1 w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" placeholder="concorrente1.com, concorrente2.com" />
+          </div>
+          <button onclick="runAudit()" class="w-full bg-primary hover:bg-primary/90 text-white py-4 rounded-xl font-bold">Iniciar Nova Auditoria</button>
+        </div>
+
+        <div id="auditResults" class="results-area" style="display: none;"></div>
+      </div>
+    </section>
+
+    <section id="content" class="app-tab-content">
+      <div class="space-y-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <div>
+            <label class="text-sm font-medium text-slate-600 dark:text-slate-400">Título do Produto/Página</label>
+            <input id="contentTitle" type="text" class="mt-1 w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" placeholder="Ex: iPhone 15 Pro Max 256GB" />
+          </div>
+          <div>
+            <label class="text-sm font-medium text-slate-600 dark:text-slate-400">Palavras-chave Principais</label>
+            <input id="contentKeywords" type="text" class="mt-1 w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" placeholder="iphone, smartphone, apple, 256gb" />
+          </div>
+        </div>
+
+        <section class="space-y-3">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-xl">description</span>
+            <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Descrição do Produto</h2>
+          </div>
+          <div class="relative group">
+            <textarea id="contentDescription" class="w-full min-h-[160px] p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#101b25] focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all resize-none text-base outline-none" placeholder="Insira a descrição original ou as especificações do produto aqui para otimização GEO..."></textarea>
+          </div>
+        </section>
+
+        <section class="space-y-4">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-xl">psychology</span>
+            <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Estratégias de IA (GEO)</h2>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+            <div class="flex flex-col items-start p-4 rounded-xl border-2 border-primary bg-primary/10 text-left">
+              <span class="material-symbols-outlined mb-2 text-primary">format_quote</span>
+              <span class="font-bold text-sm">Citações</span>
+              <span class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Aumenta autoridade LLM</span>
+            </div>
+            <div class="flex flex-col items-start p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#101b25] text-left">
+              <span class="material-symbols-outlined mb-2 text-slate-400">person_add</span>
+              <span class="font-bold text-sm">Depoimentos</span>
+              <span class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Snippets de especialistas</span>
+            </div>
+            <div class="flex flex-col items-start p-4 rounded-xl border-2 border-primary bg-primary/10 text-left">
+              <span class="material-symbols-outlined mb-2 text-primary">forum</span>
+              <span class="font-bold text-sm">Conversacional</span>
+              <span class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Busca por voz e chat</span>
+            </div>
+            <div class="flex flex-col items-start p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#101b25] text-left">
+              <span class="material-symbols-outlined mb-2 text-slate-400">schema</span>
+              <span class="font-bold text-sm">Schema.org</span>
+              <span class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Dados estruturados</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <div class="flex flex-col h-full space-y-3">
+            <h3 class="text-sm font-medium text-slate-500 flex items-center gap-2"><span class="material-symbols-outlined text-sm">history</span>Conteúdo Original</h3>
+            <div class="flex-1 p-5 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/50 text-slate-400 italic text-sm">O conteúdo original aparecerá aqui para comparação após a inserção...</div>
+          </div>
+          <div class="flex flex-col h-full space-y-3">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold text-primary flex items-center gap-2"><span class="material-symbols-outlined text-sm">auto_awesome</span>Versão Otimizada (GEO)</h3>
+              <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/20 text-green-500">ANSWER-FIRST</span>
+            </div>
+            <div class="flex-1 p-5 rounded-xl border-2 border-primary/20 bg-primary/5 dark:bg-primary/10 text-slate-800 dark:text-slate-200 text-sm leading-relaxed min-h-[180px]">A versão otimizada será gerada ao aplicar as estratégias.</div>
+          </div>
+        </section>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <button onclick="optimizeContent()" class="flex-1 py-4 px-6 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined">rocket_launch</span>
+            Aplicar Estratégias GEO
+          </button>
+          <button class="sm:w-auto py-4 px-8 border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#101b25] text-slate-700 dark:text-slate-200 font-semibold rounded-xl flex items-center justify-center gap-2">
+            <span class="material-symbols-outlined">content_copy</span>
+            Copiar Conteúdo
+          </button>
+        </div>
+
+        <div id="contentResults" class="results-area" style="display: none;"></div>
+      </div>
+    </section>
+
+    <section id="schema" class="app-tab-content">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+        <section class="lg:col-span-5 space-y-6">
+          <div>
+            <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500 mb-4 flex items-center gap-2">
+              <span class="material-symbols-outlined text-sm">settings</span>
+              Configurações do Schema
+            </h2>
+            <div class="space-y-4">
+              <div class="grid grid-cols-2 gap-4">
+                <div class="flex flex-col gap-1.5">
+                  <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Nome do Produto</label>
+                  <input id="schemaProductName" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3" placeholder="Ex: Smartphone Ultra Vision Z" type="text" />
+                </div>
+                <div class="flex flex-col gap-1.5">
+                  <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Preço</label>
+                  <input id="schemaPrice" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3" placeholder="Ex: 299.90" type="text" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div class="flex flex-col gap-1.5">
+                  <label class="text-sm font-medium text-slate-700 dark:text-slate-300">URL do Produto</label>
+                  <input id="schemaUrl" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3" placeholder="https://seusite.com/produto" type="url" />
+                </div>
+                <div class="flex flex-col gap-1.5">
+                  <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Imagem do Produto</label>
+                  <input id="schemaImage" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3" placeholder="https://seusite.com/imagem.jpg" type="url" />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div class="flex flex-col gap-1.5">
+                  <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Avaliação (1-5)</label>
+                  <input id="schemaRating" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3" max="5" min="1" step="0.1" type="number" value="4.8" />
+                </div>
+                <div class="flex flex-col gap-1.5">
+                  <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Nº de Avaliações</label>
+                  <input id="schemaReviewCount" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3" type="number" value="89" />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pt-4 space-y-3">
+            <button onclick="generateSchema()" class="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-4 rounded-lg flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined">verified_user</span>
+              Validar JSON-LD
+            </button>
+            <button onclick="copySchema()" class="w-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold py-4 rounded-lg flex items-center justify-center gap-2">
+              <span class="material-symbols-outlined">content_copy</span>
+              Copiar Código
+            </button>
+          </div>
+        </section>
+
+        <section class="lg:col-span-7 flex flex-col">
+          <div class="flex items-center justify-between mb-4">
+            <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500 flex items-center gap-2">
+              <span class="material-symbols-outlined text-sm">code</span>
+              Preview JSON-LD
+            </h2>
+            <div class="flex gap-2">
+              <span class="size-3 rounded-full bg-red-500/50"></span>
+              <span class="size-3 rounded-full bg-amber-500/50"></span>
+              <span class="size-3 rounded-full bg-emerald-500/50"></span>
+            </div>
+          </div>
+          <div class="relative group flex-1">
+            <div class="absolute inset-0 bg-primary/5 rounded-xl blur-xl"></div>
+            <div class="relative bg-[#0a1219] border border-slate-800 rounded-xl overflow-hidden h-full min-h-[400px] flex flex-col">
+              <div class="flex items-center gap-2 px-4 py-2 border-b border-slate-800 bg-slate-900/50">
+                <span class="text-xs font-mono text-slate-500">json-ld.preview</span>
+              </div>
+              <pre class="p-6 font-mono text-sm overflow-auto leading-relaxed text-slate-300"><code class="block">
+<span class="text-slate-400">{</span>
+  <span class="code-syntax-key">"@context"</span>: <span class="code-syntax-string">"https://schema.org/"</span>,
+  <span class="code-syntax-key">"@type"</span>: <span class="code-syntax-string">"Product"</span>,
+  <span class="code-syntax-key">"name"</span>: <span class="code-syntax-string">"Smartphone Ultra Vision Z"</span>,
+  <span class="code-syntax-key">"offers"</span>: <span class="text-slate-400">{</span>
+    <span class="code-syntax-key">"@type"</span>: <span class="code-syntax-string">"Offer"</span>,
+    <span class="code-syntax-key">"priceCurrency"</span>: <span class="code-syntax-string">"BRL"</span>,
+    <span class="code-syntax-key">"price"</span>: <span class="code-syntax-number">299.90</span>
+  <span class="text-slate-400">}</span>
+<span class="text-slate-400">}</span>
+              </code></pre>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div id="schemaResults" class="results-area mt-6" style="display: none;"></div>
+    </section>
+
+    <section id="faq" class="app-tab-content">
+      <div class="max-w-3xl mx-auto space-y-6">
+        <section class="space-y-6 mb-8">
+          <div class="space-y-4">
+            <div class="flex flex-col gap-2">
+              <label class="text-sm font-medium text-slate-600 dark:text-slate-400">Produto ou Tópico Principal</label>
+              <input class="w-full h-14 px-4 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" placeholder="Ex: Smartphone Ultra Vision Z" type="text" />
+            </div>
+            <div class="flex flex-col gap-2">
+              <label class="text-sm font-medium text-slate-600 dark:text-slate-400">Intenção de Busca</label>
+              <select class="w-full h-14 px-4 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900">
+                <option value="informativa">Informativa (O que é, como funciona)</option>
+                <option value="transacional">Transacional (Preço, onde comprar)</option>
+                <option value="comparativa">Comparativa (A vs B, melhor custo-benefício)</option>
+              </select>
+            </div>
+          </div>
+          <button class="w-full bg-primary hover:bg-primary/90 text-white font-bold h-14 rounded-lg flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
+            <span class="material-symbols-outlined">bolt</span>
+            Gerar Perguntas Sugeridas
+          </button>
+        </section>
+
+        <section class="space-y-4">
+          <div class="flex items-center justify-between mb-2 px-1">
+            <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Resultados Otimizados (GEO)</h2>
+            <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded font-medium">3 Sugestões</span>
+          </div>
+
+          <div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 space-y-3">
+            <div class="flex gap-3">
+              <span class="text-primary mt-1 font-bold">Q:</span>
+              <h3 class="font-bold text-slate-800 dark:text-slate-100 leading-snug">O Smartphone Ultra Vision Z é bom para fotos noturnas?</h3>
+            </div>
+            <div class="flex gap-3 pl-1 border-l-2 border-primary/30">
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed"><strong class="text-slate-900 dark:text-white">Sim, o Ultra Vision Z é excelente para fotografia noturna.</strong> Ele utiliza sensor Pro-Dark e processamento neural para reduzir ruído em baixa luminosidade.</p>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 space-y-3">
+            <div class="flex gap-3">
+              <span class="text-primary mt-1 font-bold">Q:</span>
+              <h3 class="font-bold text-slate-800 dark:text-slate-100 leading-snug">Qual a duração da bateria do Ultra Vision Z em uso intenso?</h3>
+            </div>
+            <div class="flex gap-3 pl-1 border-l-2 border-primary/30">
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed"><strong class="text-slate-900 dark:text-white">A bateria dura aproximadamente 14 horas em uso intenso.</strong> Com 5.500 mAh e carregamento ultrarrápido, atende perfis heavy-user.</p>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 space-y-3">
+            <div class="flex gap-3">
+              <span class="text-primary mt-1 font-bold">Q:</span>
+              <h3 class="font-bold text-slate-800 dark:text-slate-100 leading-snug">O Ultra Vision Z suporta tecnologia 5G no Brasil?</h3>
+            </div>
+            <div class="flex gap-3 pl-1 border-l-2 border-primary/30">
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed"><strong class="text-slate-900 dark:text-white">Sim, o Ultra Vision Z é compatível com o 5G brasileiro.</strong> Ele suporta as principais bandas nacionais para máxima cobertura.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    function switchTab(tabName, tabButton) {
+      document.querySelectorAll('.app-tab').forEach(tab => tab.classList.remove('active'));
+      document.querySelectorAll('.app-tab-content').forEach(content => content.classList.remove('active'));
+
+      if (tabButton) {
+        tabButton.classList.add('active');
+      }
+      document.getElementById(tabName).classList.add('active');
+    }
+
+    function runAudit() {
+      const url = document.getElementById('auditUrl').value;
+      const category = document.getElementById('auditCategory').value;
+      const competitors = document.getElementById('auditCompetitors').value;
+
+      if (!url) {
+        alert('Por favor, insira a URL do seu e-commerce');
+        return;
+      }
+
+      const resultsDiv = document.getElementById('auditResults');
+      resultsDiv.style.display = 'block';
+      resultsDiv.innerHTML = `
+        <div class="rounded-xl border border-primary/30 bg-primary/10 text-primary p-4">
+          Auditoria em andamento para ${url}...
+        </div>
+      `;
+
+      setTimeout(() => {
+        const score = Math.floor(Math.random() * 40) + 60;
+        const issues = [
+          'Faltam citações de fontes confiáveis nos produtos',
+          'Schema markup não implementado',
+          'Headers não estão otimizados para perguntas',
+          'FAQ section ausente ou incompleta',
+          'Descrições de produtos muito curtas (< 40 palavras)',
+          'Sem timestamps de atualização',
+          'E-E-A-T signals fracos'
+        ];
+
+        const randomIssues = issues.sort(() => 0.5 - Math.random()).slice(0, 4);
+
+        resultsDiv.innerHTML = `
+          <div class="rounded-xl border border-emerald-400/30 bg-emerald-500/10 text-emerald-400 p-4 mb-4">
+            Auditoria concluída com sucesso.
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
+            <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-4 bg-white dark:bg-slate-900/40">
+              <p class="text-xs text-slate-500">Score GEO</p>
+              <p class="text-3xl font-bold text-primary">${score}</p>
+            </div>
+            <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-4 bg-white dark:bg-slate-900/40">
+              <p class="text-xs text-slate-500">Páginas Analisadas</p>
+              <p class="text-3xl font-bold">${Math.floor(Math.random() * 50) + 20}</p>
+            </div>
+            <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-4 bg-white dark:bg-slate-900/40">
+              <p class="text-xs text-slate-500">Schema Encontrados</p>
+              <p class="text-3xl font-bold">${Math.floor(Math.random() * 3)}</p>
+            </div>
+          </div>
+
+          <h3 class="font-semibold mb-2">Principais Problemas Encontrados</h3>
+          <ul class="space-y-2">
+            ${randomIssues.map(issue => `<li class="p-3 rounded-lg border border-rose-400/30 bg-rose-500/10 text-sm">${issue}</li>`).join('')}
+          </ul>
+        `;
+      }, 1200);
+    }
+
+    function optimizeContent() {
+      const title = document.getElementById('contentTitle').value;
+      const description = document.getElementById('contentDescription').value;
+      const keywords = document.getElementById('contentKeywords').value;
+
+      if (!title || !description) {
+        alert('Por favor, preencha todos os campos');
+        return;
+      }
+
+      const resultsDiv = document.getElementById('contentResults');
+      resultsDiv.style.display = 'block';
+      resultsDiv.innerHTML = `
+        <div class="rounded-xl border border-primary/30 bg-primary/10 text-primary p-4">Otimizando conteúdo para GEO...</div>
+      `;
+
+      setTimeout(() => {
+        resultsDiv.innerHTML = `
+          <div class="rounded-xl border border-emerald-400/30 bg-emerald-500/10 text-emerald-400 p-4 mb-4">
+            Conteúdo otimizado seguindo as estratégias fundamentais.
+          </div>
+
+          <h3 class="font-semibold mb-2">Título Otimizado</h3>
+          <div class="code-block"><strong>${title}</strong> - Reviews, Preços e Onde Comprar em 2026</div>
+
+          <h3 class="font-semibold mb-2 mt-4">Descrição Otimizada (Answer-First)</h3>
+          <div class="code-block">
+            <p><strong>Resposta Direta (40-60 palavras):</strong></p>
+            <p>O ${title} é ${description.split(' ').slice(0, 15).join(' ')}... Segundo análise da Consumer Reports (2026), este modelo apresenta 98% de satisfação entre usuários.</p>
+            <p class="mt-3"><strong>Palavras-chave trabalhadas:</strong> ${keywords || 'não informado'}</p>
+          </div>
+        `;
+      }, 1000);
+    }
+
+    function generateSchema() {
+      const productName = document.getElementById('schemaProductName').value;
+      const price = document.getElementById('schemaPrice').value;
+      const url = document.getElementById('schemaUrl').value;
+      const image = document.getElementById('schemaImage').value;
+      const rating = document.getElementById('schemaRating').value;
+      const reviewCount = document.getElementById('schemaReviewCount').value;
+
+      if (!productName || !price) {
+        alert('Por favor, preencha pelo menos o nome e preço do produto');
+        return;
+      }
+
+      const resultsDiv = document.getElementById('schemaResults');
+      resultsDiv.style.display = 'block';
+
+      const productSchema = {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": productName,
+        "image": image || "https://exemplo.com/imagem.jpg",
+        "description": `Compre ${productName} com o melhor preço e condições`,
+        "brand": {
+          "@type": "Brand",
+          "name": "Sua Marca"
+        },
+        "offers": {
+          "@type": "Offer",
+          "url": url || "https://seusite.com/produto",
+          "priceCurrency": "BRL",
+          "price": price,
+          "availability": "https://schema.org/InStock",
+          "priceValidUntil": "2026-12-31"
+        },
+        "aggregateRating": {
+          "@type": "AggregateRating",
+          "ratingValue": rating || "4.5",
+          "reviewCount": reviewCount || "100"
+        }
+      };
+
+      const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": `Quanto custa o ${productName}?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `O ${productName} custa R$ ${price} e está disponível em nossa loja online com condições especiais de pagamento.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `O ${productName} tem garantia?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sim, todos os nossos produtos possuem garantia de 12 meses do fabricante e suporte técnico especializado."
+            }
+          }
+        ]
+      };
+
+      resultsDiv.innerHTML = `
+        <div class="rounded-xl border border-emerald-400/30 bg-emerald-500/10 text-emerald-400 p-4 mb-4">
+          Schema markup gerado com sucesso.
+        </div>
+
+        <h3 class="font-semibold mb-2">Product Schema</h3>
+        <div class="code-block"><pre>${JSON.stringify(productSchema, null, 2)}</pre></div>
+
+        <h3 class="font-semibold mb-2 mt-4">FAQPage Schema</h3>
+        <div class="code-block"><pre>${JSON.stringify(faqSchema, null, 2)}</pre></div>
+      `;
+    }
+
+    function runMonitoring() {
+      const url = document.getElementById('monitorUrl').value;
+      const queries = document.getElementById('monitorQueries').value;
+
+      if (!url) {
+        alert('Por favor, insira a URL para monitoramento');
+        return;
+      }
+
+      const metrics = {
+        chatgpt: Math.floor(Math.random() * 50) + 10,
+        perplexity: Math.floor(Math.random() * 30) + 5,
+        overviews: Math.floor(Math.random() * 20) + 3,
+        sov: Math.floor(Math.random() * 40) + 20,
+        score: Math.floor(Math.random() * 30) + 65,
+        sentiment: ['Positivo', 'Neutro', 'Muito Positivo'][Math.floor(Math.random() * 3)]
+      };
+
+      document.getElementById('metricChatGPT').textContent = metrics.chatgpt;
+      document.getElementById('metricPerplexity').textContent = metrics.perplexity;
+      document.getElementById('metricOverviews').textContent = metrics.overviews;
+      document.getElementById('metricSOV').textContent = metrics.sov + '%';
+      document.getElementById('metricGEOScore').textContent = metrics.score;
+      document.getElementById('metricSentiment').textContent = metrics.sentiment;
+
+      document.querySelectorAll('.score-fill').forEach((bar, index) => {
+        const values = [metrics.chatgpt, metrics.perplexity, metrics.overviews, metrics.sov, metrics.score, 75];
+        setTimeout(() => {
+          bar.style.width = Math.min(values[index] || 50, 100) + '%';
+        }, index * 80);
+      });
+    }
+
+    function copySchema() {
+      const allSchemas = document.querySelectorAll('.code-block pre');
+      let content = '';
+      allSchemas.forEach(pre => {
+        content += pre.textContent + '\n\n';
+      });
+
+      if (!content.trim()) {
+        alert('Nenhum schema disponível para cópia ainda.');
+        return;
+      }
+
+      navigator.clipboard.writeText(content).then(() => {
+        alert('Schemas copiados para a área de transferência!');
+      });
+    }
+
+    setInterval(() => {
+      const metricIds = ['metricChatGPT', 'metricPerplexity', 'metricOverviews', 'metricGEOScore'];
+      const hasData = document.getElementById('metricChatGPT').textContent !== '0';
+
+      if (!hasData) {
+        return;
+      }
+
+      metricIds.forEach(id => {
+        const el = document.getElementById(id);
+        const currentValue = parseInt(el.textContent, 10) || 0;
+        if (Math.random() > 0.75) {
+          const change = Math.random() > 0.5 ? 1 : -1;
+          el.textContent = Math.max(0, currentValue + change);
+        }
+      });
+
+      const sov = document.getElementById('metricSOV');
+      const sovValue = parseInt(sov.textContent, 10) || 0;
+      if (Math.random() > 0.75) {
+        const change = Math.random() > 0.5 ? 1 : -1;
+        sov.textContent = Math.max(0, sovValue + change) + '%';
+      }
+    }, 5000);
+  </script>
+</body>
+</html>

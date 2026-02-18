@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GeoToolPro | GEO para E-commerce</title>
+  <meta name="description" content="GeoToolPro é a plataforma de Generative Engine Optimization para e-commerces aumentarem visibilidade em ChatGPT, Perplexity e AI Overviews." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0a1219;
+      --bg-soft: #101b25;
+      --text: #eaf2f9;
+      --muted: #98adbf;
+      --primary: #0ea5e9;
+      --primary-2: #22d3ee;
+      --accent: #f59e0b;
+      --card: #13202b;
+      --line: #223442;
+      --ok: #22c55e;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Sora", sans-serif;
+      background: radial-gradient(1300px 700px at 80% -10%, #13334a 0%, transparent 55%),
+                  radial-gradient(900px 500px at -15% 10%, #19384e 0%, transparent 45%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    .wrap {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(10, 18, 25, 0.75);
+      border-bottom: 1px solid rgba(34, 52, 66, 0.7);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 18px;
+    }
+
+    .logo {
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 1.05rem;
+    }
+
+    .logo span {
+      color: var(--primary-2);
+    }
+
+    .nav {
+      display: flex;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .nav a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .nav a:hover {
+      color: var(--text);
+    }
+
+    .btn {
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-weight: 700;
+      border-radius: 12px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #041019;
+      padding: 12px 18px;
+      box-shadow: 0 12px 24px rgba(14, 165, 233, 0.24);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 30px rgba(14, 165, 233, 0.3);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--line);
+      padding: 12px 18px;
+    }
+
+    .btn-ghost:hover {
+      background: #12212d;
+    }
+
+    .hero {
+      padding: 86px 0 54px;
+      position: relative;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(34, 211, 238, 0.12);
+      color: var(--primary-2);
+      border: 1px solid rgba(34, 211, 238, 0.35);
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 0.78rem;
+      font-family: "IBM Plex Mono", monospace;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 4rem);
+      line-height: 1.08;
+      max-width: 13ch;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      max-width: 62ch;
+      color: var(--muted);
+      margin-bottom: 26px;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .metrics {
+      margin-top: 26px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(160px, 1fr));
+      gap: 12px;
+    }
+
+    .metric {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0));
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .metric strong {
+      font-size: 1.4rem;
+      display: block;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.82rem;
+      font-family: "IBM Plex Mono", monospace;
+    }
+
+    section {
+      padding: 38px 0;
+    }
+
+    .section-head {
+      margin-bottom: 18px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .section-head h2 {
+      font-size: clamp(1.2rem, 2.4vw, 1.8rem);
+    }
+
+    .section-head p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .card {
+      background: linear-gradient(160deg, rgba(255,255,255,0.035), rgba(255,255,255,0));
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    .card h3 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .pill {
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.74rem;
+      color: var(--ok);
+      margin-bottom: 8px;
+      display: inline-block;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .step {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .step::after {
+      content: "";
+      position: absolute;
+      inset: auto -25% -35% auto;
+      width: 120px;
+      height: 120px;
+      border-radius: 999px;
+      background: rgba(14, 165, 233, 0.1);
+    }
+
+    .step b {
+      display: inline-block;
+      margin-bottom: 6px;
+      color: var(--primary-2);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.8rem;
+    }
+
+    .step p {
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .cta-block {
+      margin-top: 16px;
+      background: linear-gradient(130deg, rgba(14,165,233,0.25), rgba(34,211,238,0.15));
+      border: 1px solid rgba(34,211,238,0.4);
+      border-radius: 18px;
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .cta-block h3 {
+      font-size: clamp(1.1rem, 2.4vw, 1.6rem);
+      max-width: 24ch;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      margin-top: 42px;
+      padding: 22px 0 34px;
+      color: var(--muted);
+      font-size: 0.86rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(10px);
+      animation: rise 0.6s ease forwards;
+    }
+
+    .reveal.d2 { animation-delay: 0.1s; }
+    .reveal.d3 { animation-delay: 0.2s; }
+
+    @keyframes rise {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .grid-3 { grid-template-columns: 1fr 1fr; }
+      .steps { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .nav { display: none; }
+      .metrics { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .steps { grid-template-columns: 1fr; }
+      .hero { padding-top: 64px; }
+      .cta-block { padding: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="logo" href="#">Geo<span>ToolPro</span></a>
+      <nav class="nav">
+        <a href="#recursos">Recursos</a>
+        <a href="#modulos">Módulos</a>
+        <a href="#como-funciona">Como funciona</a>
+      </nav>
+      <a class="btn btn-primary" href="login.html">Abrir Plataforma</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <span class="kicker reveal">GEO para e-commerce em produção</span>
+      <h1 class="reveal d2">Aumente sua presença em respostas de IA com o GeoToolPro.</h1>
+      <p class="reveal d3">Audite sua loja, otimize descrições com estratégia answer-first, gere schema JSON-LD e acompanhe Share of Voice em ChatGPT, Perplexity e AI Overviews em um fluxo único.</p>
+      <div class="hero-cta reveal d3">
+        <a class="btn btn-primary" href="login.html">Começar agora</a>
+        <a class="btn btn-ghost" href="#modulos">Ver módulos</a>
+      </div>
+      <div class="metrics">
+        <article class="metric reveal d2">
+          <strong>+40%</strong>
+          <span>potencial de ganho em visibilidade GEO</span>
+        </article>
+        <article class="metric reveal d3">
+          <strong>5 módulos</strong>
+          <span>auditoria, conteúdo, schema, monitoramento e FAQ</span>
+        </article>
+        <article class="metric reveal d3">
+          <strong>&lt; 10 min</strong>
+          <span>para sair do diagnóstico ao plano de ação</span>
+        </article>
+      </div>
+    </section>
+
+    <section id="recursos">
+      <div class="section-head">
+        <h2>Por que GeoToolPro</h2>
+        <p>Feito para times de growth, SEO e conteúdo de e-commerce.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <span class="pill">GEO AUDIT</span>
+          <h3>Diagnóstico orientado a LLMs</h3>
+          <p>Identifique gaps de estrutura, autoridade, semântica e elementos que aumentam chance de citação em respostas de IA.</p>
+        </article>
+        <article class="card">
+          <span class="pill">ANSWER-FIRST</span>
+          <h3>Otimização pronta para consumo</h3>
+          <p>Transforme descrições de produto em blocos de resposta direta, com linguagem conversacional e foco em intenção.</p>
+        </article>
+        <article class="card">
+          <span class="pill">SCHEMA READY</span>
+          <h3>JSON-LD em poucos cliques</h3>
+          <p>Gere Product e FAQPage schema com validação rápida para melhorar interpretação semântica do seu catálogo.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="modulos">
+      <div class="section-head">
+        <h2>Módulos da plataforma</h2>
+        <p>Layout e fluxo pensados para operação contínua.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card"><h3>1. Dashboard GEO</h3><p>Métricas de presença, sentimento e share of voice em visualização consolidada.</p></article>
+        <article class="card"><h3>2. Auditoria IA</h3><p>Checklist técnico + recomendações prioritárias para corrigir gargalos de visibilidade.</p></article>
+        <article class="card"><h3>3. Otimizador</h3><p>Reescrita orientada por estratégia: citações, clareza semântica e estrutura em perguntas.</p></article>
+        <article class="card"><h3>4. Schema Builder</h3><p>Geração de dados estruturados para produtos e FAQs prontos para publicação.</p></article>
+        <article class="card"><h3>5. FAQ GEO</h3><p>Perguntas e respostas com intenção de busca, formato ideal para snippets de IA.</p></article>
+        <article class="card"><h3>Operação contínua</h3><p>Ciclo fechado: medir, corrigir, publicar e monitorar, sem trocar de ferramenta.</p></article>
+      </div>
+    </section>
+
+    <section id="como-funciona">
+      <div class="section-head">
+        <h2>Como funciona</h2>
+        <p>Fluxo simples para sair da análise para execução.</p>
+      </div>
+      <div class="steps">
+        <article class="step"><b>PASSO 01</b><p>Conecte a URL da loja e rode auditoria GEO.</p></article>
+        <article class="step"><b>PASSO 02</b><p>Otimize conteúdo com estratégia answer-first.</p></article>
+        <article class="step"><b>PASSO 03</b><p>Publique schemas de Product e FAQPage.</p></article>
+        <article class="step"><b>PASSO 04</b><p>Monitore citações e ajuste continuamente.</p></article>
+      </div>
+
+      <div class="cta-block">
+        <h3>Pronto para levar seu e-commerce para as respostas de IA?</h3>
+        <a class="btn btn-primary" href="login.html">Entrar no GeoToolPro</a>
+      </div>
+    </section>
+
+    <footer>
+      <span>© 2026 GeoToolPro</span>
+      <span>Generative Engine Optimization para e-commerce</span>
+    </footer>
+  </main>
+</body>
+</html>

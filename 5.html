@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Gerador de FAQ (IA) - GEO Tool</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0ea5e9",
+                        "background-light": "#13202b",
+                        "background-dark": "#0a1219",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-nav-item {
+            color: #0ea5e9 !important;
+        }
+        select {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca6ba' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center p-4 max-w-2xl mx-auto w-full">
+<button class="p-2 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined block">arrow_back</span>
+</button>
+<h1 class="text-lg font-bold ml-2 flex-1 tracking-tight">Gerador de FAQ (IA)</h1>
+<button class="p-2 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined block text-primary">auto_awesome</span>
+</button>
+</div>
+</header>
+<main class="flex-1 max-w-2xl mx-auto w-full p-4 pb-32">
+<!-- Configuration Section -->
+<section class="space-y-6 mb-8">
+<div class="space-y-4">
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-600 dark:text-slate-400">Produto ou Tópico Principal</label>
+<input class="w-full h-14 px-4 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none" placeholder="Ex: Smartphone Ultra Vision Z" type="text"/>
+</div>
+<div class="flex flex-col gap-2">
+<label class="text-sm font-medium text-slate-600 dark:text-slate-400">Intenção de Busca</label>
+<select class="w-full h-14 px-4 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none">
+<option value="informativa">Informativa (O que é, como funciona)</option>
+<option value="transacional">Transacional (Preço, onde comprar)</option>
+<option value="comparativa">Comparativa (A vs B, melhor custo-benefício)</option>
+</select>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold h-14 rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">bolt</span>
+                Gerar Perguntas Sugeridas
+            </button>
+</section>
+<!-- Results Section -->
+<section class="space-y-4">
+<div class="flex items-center justify-between mb-2 px-1">
+<h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Resultados Otimizados (GEO)</h2>
+<span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded font-medium">3 Sugestões</span>
+</div>
+<!-- FAQ Item 1 -->
+<div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 space-y-3">
+<div class="flex gap-3">
+<span class="text-primary mt-1 font-bold">Q:</span>
+<h3 class="font-bold text-slate-800 dark:text-slate-100 leading-snug">O Smartphone Ultra Vision Z é bom para fotos noturnas?</h3>
+</div>
+<div class="flex gap-3 pl-1 border-l-2 border-primary/30">
+<div class="flex-1">
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+<strong class="text-slate-900 dark:text-white">Sim, o Ultra Vision Z é excelente para fotografia noturna.</strong> 
+                            Ele utiliza um sensor Pro-Dark de 1 polegada combinado com processamento neural, garantindo 40% mais brilho e redução de ruído em ambientes de baixa luminosidade comparado ao modelo anterior.
+                        </p>
+</div>
+</div>
+</div>
+<!-- FAQ Item 2 -->
+<div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 space-y-3">
+<div class="flex gap-3">
+<span class="text-primary mt-1 font-bold">Q:</span>
+<h3 class="font-bold text-slate-800 dark:text-slate-100 leading-snug">Qual a duração da bateria do Ultra Vision Z em uso intenso?</h3>
+</div>
+<div class="flex gap-3 pl-1 border-l-2 border-primary/30">
+<div class="flex-1">
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+<strong class="text-slate-900 dark:text-white">A bateria dura aproximadamente 14 horas em uso intenso.</strong>
+                            Com 5.500 mAh e carregamento ultrarrápido de 120W, o dispositivo atinge 100% de carga em apenas 19 minutos, ideal para usuários heavy-user.
+                        </p>
+</div>
+</div>
+</div>
+<!-- FAQ Item 3 -->
+<div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 space-y-3">
+<div class="flex gap-3">
+<span class="text-primary mt-1 font-bold">Q:</span>
+<h3 class="font-bold text-slate-800 dark:text-slate-100 leading-snug">O Ultra Vision Z suporta tecnologia 5G no Brasil?</h3>
+</div>
+<div class="flex gap-3 pl-1 border-l-2 border-primary/30">
+<div class="flex-1">
+<p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+<strong class="text-slate-900 dark:text-white">Sim, o Ultra Vision Z é totalmente compatível com o 5G brasileiro.</strong>
+                            Ele suporta todas as bandas nacionais (n1, n3, n7, n28 e n78), garantindo a máxima velocidade de conexão em todas as operadoras do país.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="grid grid-cols-2 gap-3 pt-4">
+<button class="flex items-center justify-center gap-2 h-12 rounded-lg border border-primary text-primary font-semibold hover:bg-primary/5 transition-colors">
+<span class="material-symbols-outlined text-sm">code</span>
+                    JSON-LD
+                </button>
+<button class="flex items-center justify-center gap-2 h-12 rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-semibold hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">
+<span class="material-symbols-outlined text-sm">add_to_drive</span>
+                    Adicionar ao Site
+                </button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white dark:bg-[#101b25] border-t border-slate-200 dark:border-[#223442] pb-safe">
+<div class="flex max-w-2xl mx-auto px-4 py-2">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 py-1 text-slate-500 dark:text-[#9ca6ba] hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-medium uppercase tracking-tight">Dashboard</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 py-1 text-slate-500 dark:text-[#9ca6ba] hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">search_check</span>
+<span class="text-[10px] font-medium uppercase tracking-tight">Auditoria</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 py-1 text-slate-500 dark:text-[#9ca6ba] hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">auto_fix_high</span>
+<span class="text-[10px] font-medium uppercase tracking-tight">Otimizador</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 py-1 text-primary active-nav-item" href="#">
+<span class="material-symbols-outlined">quiz</span>
+<span class="text-[10px] font-medium uppercase tracking-tight">FAQ</span>
+</a>
+</div>
+</nav>
+<div class="h-10"></div> <!-- Spacer for mobile nav -->
+</body></html>

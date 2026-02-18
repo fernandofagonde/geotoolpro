@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Otimizador Answer-First - GEO</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0ea5e9",
+                        "background-light": "#13202b",
+                        "background-dark": "#0a1219",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #223442;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header Navigation -->
+<header class="sticky top-0 z-50 border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md">
+<div class="flex items-center p-4 justify-between max-w-5xl mx-auto w-full">
+<div class="flex items-center gap-3">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined block">arrow_back</span>
+</button>
+<h1 class="text-lg font-bold leading-tight tracking-tight">Otimizador Answer-First</h1>
+</div>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined block">history</span>
+</button>
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined block">settings</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto custom-scrollbar">
+<div class="max-w-5xl mx-auto p-4 space-y-8 pb-32">
+<!-- Input Section -->
+<section class="space-y-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">description</span>
+<h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Descrição do Produto</h2>
+</div>
+<div class="relative group">
+<textarea class="w-full min-h-[160px] p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#101b25] focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all resize-none text-base outline-none" placeholder="Insira a descrição original ou as especificações do produto aqui para otimização GEO..."></textarea>
+<div class="absolute bottom-3 right-3 text-xs text-slate-400">0 / 2000</div>
+</div>
+</section>
+<!-- AI Strategy Toggle -->
+<section class="space-y-4">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-xl">psychology</span>
+<h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Estratégias de IA (GEO)</h2>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+<!-- Citation Toggle -->
+<button class="flex flex-col items-start p-4 rounded-xl border-2 border-primary bg-primary/10 transition-all text-left group">
+<span class="material-symbols-outlined mb-2 text-primary">format_quote</span>
+<span class="font-bold text-sm">Citações</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Aumenta autoridade LLM</span>
+</button>
+<!-- Quotes Toggle -->
+<button class="flex flex-col items-start p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#101b25] hover:border-primary/50 transition-all text-left group">
+<span class="material-symbols-outlined mb-2 text-slate-400 group-hover:text-primary">person_add</span>
+<span class="font-bold text-sm">Depoimentos</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Snippets de especialistas</span>
+</button>
+<!-- Tone Toggle -->
+<button class="flex flex-col items-start p-4 rounded-xl border-2 border-primary bg-primary/10 transition-all text-left group">
+<span class="material-symbols-outlined mb-2 text-primary">forum</span>
+<span class="font-bold text-sm">Conversacional</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Busca por voz &amp; Chat</span>
+</button>
+<!-- Schema Toggle -->
+<button class="flex flex-col items-start p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#101b25] hover:border-primary/50 transition-all text-left group">
+<span class="material-symbols-outlined mb-2 text-slate-400 group-hover:text-primary">schema</span>
+<span class="font-bold text-sm">Schema.org</span>
+<span class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Dados estruturados</span>
+</button>
+</div>
+</section>
+<!-- Split Preview Section -->
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+<!-- Original Content -->
+<div class="flex flex-col h-full space-y-3">
+<div class="flex items-center justify-between">
+<h3 class="text-sm font-medium text-slate-500 flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">history</span> Conteúdo Original
+                        </h3>
+</div>
+<div class="flex-1 p-5 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/50 text-slate-400 italic text-sm">
+                        O conteúdo original aparecerá aqui para comparação após a inserção...
+                    </div>
+</div>
+<!-- Optimized Content -->
+<div class="flex flex-col h-full space-y-3">
+<div class="flex items-center justify-between">
+<h3 class="text-sm font-bold text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">auto_awesome</span> Versão Otimizada (GEO)
+                        </h3>
+<span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/20 text-green-500">ANSWER-FIRST</span>
+</div>
+<div class="flex-1 p-5 rounded-xl border-2 border-primary/20 bg-primary/5 dark:bg-primary/10 text-slate-800 dark:text-slate-200 text-sm leading-relaxed relative min-h-[200px]">
+<div class="flex flex-col gap-4">
+<div class="h-4 w-3/4 bg-slate-300 dark:bg-slate-700 rounded animate-pulse"></div>
+<div class="h-4 w-full bg-slate-300 dark:bg-slate-700 rounded animate-pulse"></div>
+<div class="h-4 w-5/6 bg-slate-300 dark:bg-slate-700 rounded animate-pulse"></div>
+</div>
+<div class="absolute inset-0 flex items-center justify-center bg-background-light/40 dark:bg-background-dark/40 backdrop-blur-[1px]">
+<p class="text-xs font-medium text-slate-500">Aguardando aplicação de estratégias...</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Floating Action Footer -->
+<footer class="fixed bottom-0 left-0 right-0 p-4 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark z-50">
+<div class="max-w-5xl mx-auto flex flex-col sm:flex-row gap-3">
+<button class="flex-1 py-4 px-6 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-primary/20 active:scale-[0.98]">
+<span class="material-symbols-outlined">rocket_launch</span>
+                Aplicar Estratégias GEO
+            </button>
+<button class="sm:w-auto py-4 px-8 border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#101b25] hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold rounded-xl flex items-center justify-center gap-2 transition-all">
+<span class="material-symbols-outlined">content_copy</span>
+                Copiar Conteúdo
+            </button>
+</div>
+</footer>
+<!-- Bottom Navigation (Mobile Styled) -->
+<nav class="fixed bottom-0 left-0 right-0 hidden">
+<!-- Optional extra mobile bottom nav if needed -->
+</nav>
+<!-- Bottom Tab Bar Example Integration -->
+<div class="fixed bottom-0 left-0 w-full z-[60] md:hidden">
+<div class="flex gap-2 border-t border-[#223442] bg-[#101b25] px-4 pb-3 pt-2">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[#9ca6ba]" href="#">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<p class="text-xs font-medium leading-normal">Início</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-white" href="#">
+<span class="material-symbols-outlined text-[24px] text-primary">bolt</span>
+<p class="text-xs font-medium leading-normal">Otimizador</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[#9ca6ba]" href="#">
+<span class="material-symbols-outlined text-[24px]">analytics</span>
+<p class="text-xs font-medium leading-normal">Insights</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-[#9ca6ba]" href="#">
+<span class="material-symbols-outlined text-[24px]">person</span>
+<p class="text-xs font-medium leading-normal">Perfil</p>
+</a>
+</div>
+</div>
+</body></html>
