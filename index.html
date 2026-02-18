@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GeoToolPro | GEO para E-commerce</title>
-  <meta name="description" content="GeoToolPro é a plataforma de Generative Engine Optimization para e-commerces aumentarem visibilidade em ChatGPT, Perplexity e AI Overviews." />
+  <title>GeoToolPro | GEO para Negócios</title>
+  <meta name="description" content="GeoToolPro é a plataforma de Generative Engine Optimization para Negócioss aumentarem visibilidade em ChatGPT, Perplexity e AI Overviews." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -61,6 +61,9 @@
     }
 
     .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       font-weight: 800;
       letter-spacing: 0.4px;
       text-decoration: none;
@@ -68,7 +71,18 @@
       font-size: 1.05rem;
     }
 
-    .logo span {
+    .logo img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .logo .logo-text {
+      color: var(--text);
+    }
+
+    .logo .logo-text span {
       color: var(--primary-2);
     }
 
@@ -296,6 +310,96 @@
       max-width: 24ch;
     }
 
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .pricing-card {
+      background: linear-gradient(165deg, rgba(255,255,255,0.035), rgba(255,255,255,0));
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 20px;
+      position: relative;
+    }
+
+    .pricing-card.popular {
+      border-color: rgba(34, 211, 238, 0.7);
+      box-shadow: 0 16px 30px rgba(14, 165, 233, 0.18);
+    }
+
+    .pricing-badge {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.68rem;
+      background: rgba(34, 211, 238, 0.16);
+      color: var(--primary-2);
+      border: 1px solid rgba(34, 211, 238, 0.45);
+      border-radius: 999px;
+      padding: 4px 8px;
+    }
+
+    .pricing-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 2px;
+    }
+
+    .pricing-for {
+      color: var(--muted);
+      font-size: 0.86rem;
+      margin-bottom: 12px;
+    }
+
+    .price {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-bottom: 14px;
+    }
+
+    .price strong {
+      font-size: 1.85rem;
+      line-height: 1.1;
+    }
+
+    .price span {
+      color: var(--muted);
+      font-family: "IBM Plex Mono", monospace;
+      font-size: 0.8rem;
+    }
+
+    .pricing-list {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .pricing-list li {
+      color: #d9e6f2;
+      font-size: 0.88rem;
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .pricing-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--primary-2);
+      font-size: 1rem;
+      line-height: 1;
+      top: 2px;
+    }
+
+    .pricing-card .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
     footer {
       border-top: 1px solid var(--line);
       margin-top: 42px;
@@ -328,6 +432,8 @@
     @media (max-width: 980px) {
       .grid-3 { grid-template-columns: 1fr 1fr; }
       .steps { grid-template-columns: 1fr 1fr; }
+      .pricing-grid { grid-template-columns: 1fr 1fr; }
+      .pricing-card.popular { grid-column: span 2; }
     }
 
     @media (max-width: 720px) {
@@ -335,6 +441,9 @@
       .metrics { grid-template-columns: 1fr; }
       .grid-3 { grid-template-columns: 1fr; }
       .steps { grid-template-columns: 1fr; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .pricing-card.popular { grid-column: auto; }
+      .logo img { width: 30px; height: 30px; }
       .hero { padding-top: 64px; }
       .cta-block { padding: 18px; }
     }
@@ -343,10 +452,14 @@
 <body>
   <header class="topbar">
     <div class="wrap topbar-inner">
-      <a class="logo" href="#">Geo<span>ToolPro</span></a>
+      <a class="logo" href="#">
+        <img src="img/logo.png" alt="GeoToolPro logo" />
+        <span class="logo-text">Geo<span>ToolPro</span></span>
+      </a>
       <nav class="nav">
         <a href="#recursos">Recursos</a>
         <a href="#modulos">Módulos</a>
+        <a href="#pricing">Pricing</a>
         <a href="#como-funciona">Como funciona</a>
       </nav>
       <a class="btn btn-primary" href="login.html">Abrir Plataforma</a>
@@ -355,7 +468,7 @@
 
   <main class="wrap">
     <section class="hero">
-      <span class="kicker reveal">GEO para e-commerce em produção</span>
+      <span class="kicker reveal">GEO para Negócios em produção</span>
       <h1 class="reveal d2">Aumente sua presença em respostas de IA com o GeoToolPro.</h1>
       <p class="reveal d3">Audite sua loja, otimize descrições com estratégia answer-first, gere schema JSON-LD e acompanhe Share of Voice em ChatGPT, Perplexity e AI Overviews em um fluxo único.</p>
       <div class="hero-cta reveal d3">
@@ -381,7 +494,7 @@
     <section id="recursos">
       <div class="section-head">
         <h2>Por que GeoToolPro</h2>
-        <p>Feito para times de growth, SEO e conteúdo de e-commerce.</p>
+        <p>Feito para times de growth, SEO e conteúdo de Negócios.</p>
       </div>
       <div class="grid-3">
         <article class="card">
@@ -417,6 +530,72 @@
       </div>
     </section>
 
+    <section id="pricing">
+      <div class="section-head">
+        <h2>Pricing GEO Tool Pro</h2>
+        <p>3 planos estratégicos para cada estágio do seu Negócios.</p>
+      </div>
+      <div class="pricing-grid">
+        <article class="pricing-card">
+          <h3>Starter</h3>
+          <p class="pricing-for">Ideal para: Pequenos Negócioss começando com GEO</p>
+          <div class="price">
+            <strong>R$ 497/mês</strong>
+            <span>R$ 397/mês no anual</span>
+          </div>
+          <ul class="pricing-list">
+            <li>Auditoria GEO mensal (50 páginas)</li>
+            <li>2 produtos otimizados/mês</li>
+            <li>Monitoramento ChatGPT</li>
+            <li>Schema básico (Product + FAQ)</li>
+            <li>Suporte 48h</li>
+          </ul>
+          <a class="btn btn-ghost" href="login.html">Escolher Starter</a>
+        </article>
+
+        <article class="pricing-card popular">
+          <span class="pricing-badge">MAIS POPULAR</span>
+          <h3>Professional</h3>
+          <p class="pricing-for">Ideal para: Negócioss em crescimento</p>
+          <div class="price">
+            <strong>R$ 997/mês</strong>
+            <span>R$ 797/mês no anual</span>
+          </div>
+          <ul class="pricing-list">
+            <li>Auditoria semanal (200 páginas)</li>
+            <li>20 produtos otimizados/mês</li>
+            <li>Monitoramento em 3 plataformas (ChatGPT + Perplexity + AI Overviews)</li>
+            <li>Share of Voice + análise de sentimento</li>
+            <li>100 queries customizadas</li>
+            <li>Consultoria 1h/mês</li>
+            <li>Suporte prioritário 4h</li>
+          </ul>
+          <a class="btn btn-primary" href="login.html">Escolher Professional</a>
+        </article>
+
+        <article class="pricing-card">
+          <h3>Enterprise</h3>
+          <p class="pricing-for">Ideal para: Grandes Negócioss e agências</p>
+          <div class="price">
+            <strong>R$ 2.497/mês</strong>
+            <span>R$ 1.997/mês no anual</span>
+          </div>
+          <ul class="pricing-list">
+            <li>Auditoria diária (ilimitado)</li>
+            <li>Otimização ilimitada</li>
+            <li>Monitoramento em 5+ plataformas LLM</li>
+            <li>API completa</li>
+            <li>White-label para agências</li>
+            <li>Multi-domínios (10 sites)</li>
+            <li>Gerente de conta dedicado</li>
+            <li>Consultoria 4h/mês</li>
+            <li>Suporte 24/7</li>
+          </ul>
+          <a class="btn btn-ghost" href="login.html">Escolher Enterprise</a>
+        </article>
+      </div>
+    </section>
+
     <section id="como-funciona">
       <div class="section-head">
         <h2>Como funciona</h2>
@@ -430,14 +609,14 @@
       </div>
 
       <div class="cta-block">
-        <h3>Pronto para levar seu e-commerce para as respostas de IA?</h3>
+        <h3>Pronto para levar seu Negócios para as respostas de IA?</h3>
         <a class="btn btn-primary" href="login.html">Entrar no GeoToolPro</a>
       </div>
     </section>
 
     <footer>
       <span>© 2026 GeoToolPro</span>
-      <span>Generative Engine Optimization para e-commerce</span>
+      <span>Generative Engine Optimization para Negócios</span>
     </footer>
   </main>
 </body>
