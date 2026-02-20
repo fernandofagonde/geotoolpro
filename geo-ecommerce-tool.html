@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html class="dark" lang="pt-BR">
+<html class="dark" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GEO Tool Pro - Ferramenta de Generative Engine Optimization para Negócios</title>
+  <title>GEO Tool Pro - Generative Engine Optimization Tool for Businesses</title>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
@@ -94,15 +94,15 @@
     <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between gap-4">
       <div>
         <h1 class="text-lg sm:text-xl font-bold tracking-tight">GEO Tool Pro</h1>
-        <p class="text-xs text-slate-500 dark:text-slate-400">Ferramenta de Generative Engine Optimization para Negócios</p>
+        <p class="text-xs text-slate-500 dark:text-slate-400">Generative Engine Optimization Tool for Businesses</p>
       </div>
       <div class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-xs font-semibold">v2026.1</div>
     </div>
     <div class="max-w-6xl mx-auto px-4 pb-4">
       <div class="flex gap-2 overflow-x-auto">
         <button class="app-tab active shrink-0 px-3 py-2 text-xs sm:text-sm rounded-lg border border-slate-300 dark:border-slate-700" onclick="switchTab('monitoring', this)">1. Dashboard</button>
-        <button class="app-tab shrink-0 px-3 py-2 text-xs sm:text-sm rounded-lg border border-slate-300 dark:border-slate-700" onclick="switchTab('audit', this)">2. Auditoria</button>
-        <button class="app-tab shrink-0 px-3 py-2 text-xs sm:text-sm rounded-lg border border-slate-300 dark:border-slate-700" onclick="switchTab('content', this)">3. Otimizador</button>
+        <button class="app-tab shrink-0 px-3 py-2 text-xs sm:text-sm rounded-lg border border-slate-300 dark:border-slate-700" onclick="switchTab('audit', this)">2. Audit</button>
+        <button class="app-tab shrink-0 px-3 py-2 text-xs sm:text-sm rounded-lg border border-slate-300 dark:border-slate-700" onclick="switchTab('content', this)">3. Optimizer</button>
         <button class="app-tab shrink-0 px-3 py-2 text-xs sm:text-sm rounded-lg border border-slate-300 dark:border-slate-700" onclick="switchTab('schema', this)">4. Schema</button>
         <button class="app-tab shrink-0 px-3 py-2 text-xs sm:text-sm rounded-lg border border-slate-300 dark:border-slate-700" onclick="switchTab('faq', this)">5. FAQ</button>
       </div>
@@ -119,7 +119,7 @@
               <div class="flex items-baseline gap-2 mt-1">
                 <h3 id="metricSOV" class="text-3xl font-bold text-slate-900 dark:text-white">0%</h3>
                 <span class="text-xs font-bold text-emerald-500 flex items-center">
-                  <span class="material-symbols-outlined text-sm">trending_up</span> em tempo real
+                  <span class="material-symbols-outlined text-sm">trending_up</span> in real time
                 </span>
               </div>
             </div>
@@ -142,7 +142,7 @@
         </div>
 
         <div class="rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 p-5">
-          <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-500 mb-4">Sentimento Médio</h3>
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-500 mb-4">Average Sentiment</h3>
           <div class="flex items-center justify-between">
             <div class="relative size-24">
               <svg class="size-full radial-progress" viewBox="0 0 100 100">
@@ -162,12 +162,12 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         <div class="rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 p-4">
-          <p class="text-xs text-slate-500">Citações ChatGPT</p>
+          <p class="text-xs text-slate-500">ChatGPT Citations</p>
           <p id="metricChatGPT" class="text-2xl font-bold mt-1">0</p>
           <div class="mt-3 h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden"><div class="score-fill h-full bg-primary" style="width: 0%"></div></div>
         </div>
         <div class="rounded-xl bg-white dark:bg-slate-800/40 border border-slate-200 dark:border-slate-700/50 p-4">
-          <p class="text-xs text-slate-500">Citações Perplexity</p>
+          <p class="text-xs text-slate-500">Perplexity Citations</p>
           <p id="metricPerplexity" class="text-2xl font-bold mt-1">0</p>
           <div class="mt-3 h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden"><div class="score-fill h-full bg-primary" style="width: 0%"></div></div>
         </div>
@@ -184,18 +184,18 @@
       </div>
 
       <div class="rounded-xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 p-5 space-y-4">
-        <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Executar Monitoramento</h3>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Run Monitoring</h3>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <label class="text-sm font-medium text-slate-600 dark:text-slate-400">URL para Monitoramento</label>
-            <input id="monitorUrl" type="url" class="mt-1 w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" placeholder="https://seusite.com.br" />
+            <label class="text-sm font-medium text-slate-600 dark:text-slate-400">URL for Monitoring</label>
+            <input id="monitorUrl" type="url" class="mt-1 w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" placeholder="https://yoursite.com" />
           </div>
           <div>
-            <label class="text-sm font-medium text-slate-600 dark:text-slate-400">Queries de Teste (uma por linha)</label>
-            <textarea id="monitorQueries" class="mt-1 w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" rows="3" placeholder="melhores smartphones 2026&#10;onde comprar iPhone barato&#10;reviews iPhone 15 Pro Max"></textarea>
+            <label class="text-sm font-medium text-slate-600 dark:text-slate-400">Test Queries (one per line)</label>
+            <textarea id="monitorQueries" class="mt-1 w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" rows="3" placeholder="best smartphones 2026&#10;where to buy cheap iPhone&#10;iPhone 15 Pro Max reviews"></textarea>
           </div>
         </div>
-        <button onclick="runMonitoring()" class="w-full md:w-auto bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-lg">Iniciar Monitoramento</button>
+        <button onclick="runMonitoring()" class="w-full md:w-auto bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-3 rounded-lg">Start Monitoring</button>
       </div>
     </section>
 
@@ -211,27 +211,27 @@
           </div>
           <div class="mt-6 text-center">
             <h2 class="text-xl font-bold text-slate-900 dark:text-white">AI-Readability Score</h2>
-            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Auditoria de legibilidade e GEO para motores generativos.</p>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Readability and GEO audit for generative engines.</p>
           </div>
         </div>
 
         <div class="space-y-4 rounded-xl bg-white dark:bg-slate-900/50 border border-slate-200 dark:border-slate-800 p-5">
-          <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Parâmetros da Auditoria</h3>
+          <h3 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Audit Parameters</h3>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label class="text-sm font-medium text-slate-600 dark:text-slate-400">URL do Negócios</label>
-              <input id="auditUrl" type="url" class="mt-1 w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" placeholder="https://seusite.com.br" />
+              <label class="text-sm font-medium text-slate-600 dark:text-slate-400">Business URL</label>
+              <input id="auditUrl" type="url" class="mt-1 w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" placeholder="https://yoursite.com" />
             </div>
             <div>
-              <label class="text-sm font-medium text-slate-600 dark:text-slate-400">Categoria Principal</label>
-              <input id="auditCategory" type="text" class="mt-1 w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" placeholder="Ex: Eletrônicos" />
+              <label class="text-sm font-medium text-slate-600 dark:text-slate-400">Main Category</label>
+              <input id="auditCategory" type="text" class="mt-1 w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" placeholder="Ex: Electronics" />
             </div>
           </div>
           <div>
-            <label class="text-sm font-medium text-slate-600 dark:text-slate-400">Concorrentes (separados por vírgula)</label>
-            <input id="auditCompetitors" type="text" class="mt-1 w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" placeholder="concorrente1.com, concorrente2.com" />
+            <label class="text-sm font-medium text-slate-600 dark:text-slate-400">Competitors (comma-separated)</label>
+            <input id="auditCompetitors" type="text" class="mt-1 w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" placeholder="competitor1.com, competitor2.com" />
           </div>
-          <button onclick="runAudit()" class="w-full bg-primary hover:bg-primary/90 text-white py-4 rounded-xl font-bold">Iniciar Nova Auditoria</button>
+          <button onclick="runAudit()" class="w-full bg-primary hover:bg-primary/90 text-white py-4 rounded-xl font-bold">Start New Audit</button>
         </div>
 
         <div id="auditResults" class="results-area" style="display: none;"></div>
@@ -242,11 +242,11 @@
       <div class="space-y-6">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div>
-            <label class="text-sm font-medium text-slate-600 dark:text-slate-400">Título do Produto/Página</label>
+            <label class="text-sm font-medium text-slate-600 dark:text-slate-400">Product/Page Title</label>
             <input id="contentTitle" type="text" class="mt-1 w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" placeholder="Ex: iPhone 15 Pro Max 256GB" />
           </div>
           <div>
-            <label class="text-sm font-medium text-slate-600 dark:text-slate-400">Palavras-chave Principais</label>
+            <label class="text-sm font-medium text-slate-600 dark:text-slate-400">Main Keywords</label>
             <input id="contentKeywords" type="text" class="mt-1 w-full rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" placeholder="iphone, smartphone, apple, 256gb" />
           </div>
         </div>
@@ -254,64 +254,64 @@
         <section class="space-y-3">
           <div class="flex items-center gap-2">
             <span class="material-symbols-outlined text-primary text-xl">description</span>
-            <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Descrição do Produto</h2>
+            <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Product Description</h2>
           </div>
           <div class="relative group">
-            <textarea id="contentDescription" class="w-full min-h-[160px] p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#101b25] focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all resize-none text-base outline-none" placeholder="Insira a descrição original ou as especificações do produto aqui para otimização GEO..."></textarea>
+            <textarea id="contentDescription" class="w-full min-h-[160px] p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#101b25] focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all resize-none text-base outline-none" placeholder="Enter the original description or product specifications here for GEO optimization..."></textarea>
           </div>
         </section>
 
         <section class="space-y-4">
           <div class="flex items-center gap-2">
             <span class="material-symbols-outlined text-primary text-xl">psychology</span>
-            <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Estratégias de IA (GEO)</h2>
+            <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">AI Strategies (GEO)</h2>
           </div>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
             <div class="flex flex-col items-start p-4 rounded-xl border-2 border-primary bg-primary/10 text-left">
               <span class="material-symbols-outlined mb-2 text-primary">format_quote</span>
-              <span class="font-bold text-sm">Citações</span>
-              <span class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Aumenta autoridade LLM</span>
+              <span class="font-bold text-sm">Citations</span>
+              <span class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Increases LLM authority</span>
             </div>
             <div class="flex flex-col items-start p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#101b25] text-left">
               <span class="material-symbols-outlined mb-2 text-slate-400">person_add</span>
-              <span class="font-bold text-sm">Depoimentos</span>
-              <span class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Snippets de especialistas</span>
+              <span class="font-bold text-sm">Testimonials</span>
+              <span class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Expert snippets</span>
             </div>
             <div class="flex flex-col items-start p-4 rounded-xl border-2 border-primary bg-primary/10 text-left">
               <span class="material-symbols-outlined mb-2 text-primary">forum</span>
-              <span class="font-bold text-sm">Conversacional</span>
-              <span class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Busca por voz e chat</span>
+              <span class="font-bold text-sm">Conversational</span>
+              <span class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Voice search and chat</span>
             </div>
             <div class="flex flex-col items-start p-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#101b25] text-left">
               <span class="material-symbols-outlined mb-2 text-slate-400">schema</span>
               <span class="font-bold text-sm">Schema.org</span>
-              <span class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Dados estruturados</span>
+              <span class="text-[10px] text-slate-500 dark:text-slate-400 mt-1">Structured data</span>
             </div>
           </div>
         </section>
 
         <section class="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <div class="flex flex-col h-full space-y-3">
-            <h3 class="text-sm font-medium text-slate-500 flex items-center gap-2"><span class="material-symbols-outlined text-sm">history</span>Conteúdo Original</h3>
-            <div class="flex-1 p-5 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/50 text-slate-400 italic text-sm">O conteúdo original aparecerá aqui para comparação após a inserção...</div>
+            <h3 class="text-sm font-medium text-slate-500 flex items-center gap-2"><span class="material-symbols-outlined text-sm">history</span>Original Content</h3>
+            <div class="flex-1 p-5 rounded-xl border border-dashed border-slate-300 dark:border-slate-700 bg-slate-50/50 dark:bg-slate-900/50 text-slate-400 italic text-sm">The original content will appear here for comparison after insertion...</div>
           </div>
           <div class="flex flex-col h-full space-y-3">
             <div class="flex items-center justify-between">
-              <h3 class="text-sm font-bold text-primary flex items-center gap-2"><span class="material-symbols-outlined text-sm">auto_awesome</span>Versão Otimizada (GEO)</h3>
+              <h3 class="text-sm font-bold text-primary flex items-center gap-2"><span class="material-symbols-outlined text-sm">auto_awesome</span>Optimized Version (GEO)</h3>
               <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-green-500/20 text-green-500">ANSWER-FIRST</span>
             </div>
-            <div class="flex-1 p-5 rounded-xl border-2 border-primary/20 bg-primary/5 dark:bg-primary/10 text-slate-800 dark:text-slate-200 text-sm leading-relaxed min-h-[180px]">A versão otimizada será gerada ao aplicar as estratégias.</div>
+            <div class="flex-1 p-5 rounded-xl border-2 border-primary/20 bg-primary/5 dark:bg-primary/10 text-slate-800 dark:text-slate-200 text-sm leading-relaxed min-h-[180px]">The optimized version will be generated when applying strategies.</div>
           </div>
         </section>
 
         <div class="flex flex-col sm:flex-row gap-3">
           <button onclick="optimizeContent()" class="flex-1 py-4 px-6 bg-primary hover:bg-primary/90 text-white font-bold rounded-xl flex items-center justify-center gap-2">
             <span class="material-symbols-outlined">rocket_launch</span>
-            Aplicar Estratégias GEO
+            Apply GEO Strategies
           </button>
           <button class="sm:w-auto py-4 px-8 border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#101b25] text-slate-700 dark:text-slate-200 font-semibold rounded-xl flex items-center justify-center gap-2">
             <span class="material-symbols-outlined">content_copy</span>
-            Copiar Conteúdo
+            Copy Content
           </button>
         </div>
 
@@ -325,38 +325,38 @@
           <div>
             <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500 mb-4 flex items-center gap-2">
               <span class="material-symbols-outlined text-sm">settings</span>
-              Configurações do Schema
+              Schema Settings
             </h2>
             <div class="space-y-4">
               <div class="grid grid-cols-2 gap-4">
                 <div class="flex flex-col gap-1.5">
-                  <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Nome do Produto</label>
+                  <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Product Name</label>
                   <input id="schemaProductName" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3" placeholder="Ex: Smartphone Ultra Vision Z" type="text" />
                 </div>
                 <div class="flex flex-col gap-1.5">
-                  <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Preço</label>
+                  <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Price</label>
                   <input id="schemaPrice" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3" placeholder="Ex: 299.90" type="text" />
                 </div>
               </div>
 
               <div class="grid grid-cols-2 gap-4">
                 <div class="flex flex-col gap-1.5">
-                  <label class="text-sm font-medium text-slate-700 dark:text-slate-300">URL do Produto</label>
-                  <input id="schemaUrl" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3" placeholder="https://seusite.com/produto" type="url" />
+                  <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Product URL</label>
+                  <input id="schemaUrl" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3" placeholder="https://yoursite.com/product" type="url" />
                 </div>
                 <div class="flex flex-col gap-1.5">
-                  <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Imagem do Produto</label>
-                  <input id="schemaImage" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3" placeholder="https://seusite.com/imagem.jpg" type="url" />
+                  <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Product Image</label>
+                  <input id="schemaImage" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3" placeholder="https://yoursite.com/image.jpg" type="url" />
                 </div>
               </div>
 
               <div class="grid grid-cols-2 gap-4">
                 <div class="flex flex-col gap-1.5">
-                  <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Avaliação (1-5)</label>
+                  <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Rating (1-5)</label>
                   <input id="schemaRating" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3" max="5" min="1" step="0.1" type="number" value="4.8" />
                 </div>
                 <div class="flex flex-col gap-1.5">
-                  <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Nº de Avaliações</label>
+                  <label class="text-sm font-medium text-slate-700 dark:text-slate-300">Number of Reviews</label>
                   <input id="schemaReviewCount" class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3" type="number" value="89" />
                 </div>
               </div>
@@ -366,11 +366,11 @@
           <div class="pt-4 space-y-3">
             <button onclick="generateSchema()" class="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-4 rounded-lg flex items-center justify-center gap-2">
               <span class="material-symbols-outlined">verified_user</span>
-              Validar JSON-LD
+              Validate JSON-LD
             </button>
             <button onclick="copySchema()" class="w-full bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-200 font-semibold py-4 rounded-lg flex items-center justify-center gap-2">
               <span class="material-symbols-outlined">content_copy</span>
-              Copiar Código
+              Copy Code
             </button>
           </div>
         </section>
@@ -418,57 +418,57 @@
         <section class="space-y-6 mb-8">
           <div class="space-y-4">
             <div class="flex flex-col gap-2">
-              <label class="text-sm font-medium text-slate-600 dark:text-slate-400">Produto ou Tópico Principal</label>
+              <label class="text-sm font-medium text-slate-600 dark:text-slate-400">Main Product or Topic</label>
               <input class="w-full h-14 px-4 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900" placeholder="Ex: Smartphone Ultra Vision Z" type="text" />
             </div>
             <div class="flex flex-col gap-2">
-              <label class="text-sm font-medium text-slate-600 dark:text-slate-400">Intenção de Busca</label>
+              <label class="text-sm font-medium text-slate-600 dark:text-slate-400">Search Intent</label>
               <select class="w-full h-14 px-4 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900">
-                <option value="informativa">Informativa (O que é, como funciona)</option>
-                <option value="transacional">Transacional (Preço, onde comprar)</option>
-                <option value="comparativa">Comparativa (A vs B, melhor custo-benefício)</option>
+                <option value="informativa">Informational (What it is, how it works)</option>
+                <option value="transacional">Transactional (Price, where to buy)</option>
+                <option value="comparativa">Comparative (A vs B, best cost-benefit)</option>
               </select>
             </div>
           </div>
           <button class="w-full bg-primary hover:bg-primary/90 text-white font-bold h-14 rounded-lg flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
             <span class="material-symbols-outlined">bolt</span>
-            Gerar Perguntas Sugeridas
+            Generate Suggested Questions
           </button>
         </section>
 
         <section class="space-y-4">
           <div class="flex items-center justify-between mb-2 px-1">
-            <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Resultados Otimizados (GEO)</h2>
-            <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded font-medium">3 Sugestões</span>
+            <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Optimized Results (GEO)</h2>
+            <span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded font-medium">3 Suggestions</span>
           </div>
 
           <div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 space-y-3">
             <div class="flex gap-3">
               <span class="text-primary mt-1 font-bold">Q:</span>
-              <h3 class="font-bold text-slate-800 dark:text-slate-100 leading-snug">O Smartphone Ultra Vision Z é bom para fotos noturnas?</h3>
+              <h3 class="font-bold text-slate-800 dark:text-slate-100 leading-snug">Is the Ultra Vision Z smartphone good for night photos?</h3>
             </div>
             <div class="flex gap-3 pl-1 border-l-2 border-primary/30">
-              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed"><strong class="text-slate-900 dark:text-white">Sim, o Ultra Vision Z é excelente para fotografia noturna.</strong> Ele utiliza sensor Pro-Dark e processamento neural para reduzir ruído em baixa luminosidade.</p>
-            </div>
-          </div>
-
-          <div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 space-y-3">
-            <div class="flex gap-3">
-              <span class="text-primary mt-1 font-bold">Q:</span>
-              <h3 class="font-bold text-slate-800 dark:text-slate-100 leading-snug">Qual a duração da bateria do Ultra Vision Z em uso intenso?</h3>
-            </div>
-            <div class="flex gap-3 pl-1 border-l-2 border-primary/30">
-              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed"><strong class="text-slate-900 dark:text-white">A bateria dura aproximadamente 14 horas em uso intenso.</strong> Com 5.500 mAh e carregamento ultrarrápido, atende perfis heavy-user.</p>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed"><strong class="text-slate-900 dark:text-white">Yes, the Ultra Vision Z is excellent for night photography.</strong> It uses a Pro-Dark sensor and neural processing to reduce noise in low light.</p>
             </div>
           </div>
 
           <div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 space-y-3">
             <div class="flex gap-3">
               <span class="text-primary mt-1 font-bold">Q:</span>
-              <h3 class="font-bold text-slate-800 dark:text-slate-100 leading-snug">O Ultra Vision Z suporta tecnologia 5G no Brasil?</h3>
+              <h3 class="font-bold text-slate-800 dark:text-slate-100 leading-snug">How long does the Ultra Vision Z battery last under heavy usage?</h3>
             </div>
             <div class="flex gap-3 pl-1 border-l-2 border-primary/30">
-              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed"><strong class="text-slate-900 dark:text-white">Sim, o Ultra Vision Z é compatível com o 5G brasileiro.</strong> Ele suporta as principais bandas nacionais para máxima cobertura.</p>
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed"><strong class="text-slate-900 dark:text-white">The battery lasts about 14 hours under heavy usage.</strong> With 5,500 mAh and ultra-fast charging, it fits heavy-user profiles.</p>
+            </div>
+          </div>
+
+          <div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 space-y-3">
+            <div class="flex gap-3">
+              <span class="text-primary mt-1 font-bold">Q:</span>
+              <h3 class="font-bold text-slate-800 dark:text-slate-100 leading-snug">Does the Ultra Vision Z support 5G in Brazil?</h3>
+            </div>
+            <div class="flex gap-3 pl-1 border-l-2 border-primary/30">
+              <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed"><strong class="text-slate-900 dark:text-white">Yes, the Ultra Vision Z is compatible with Brazilian 5G.</strong> It supports the main national bands for maximum coverage.</p>
             </div>
           </div>
         </section>
@@ -493,7 +493,7 @@
       const competitors = document.getElementById('auditCompetitors').value;
 
       if (!url) {
-        alert('Por favor, insira a URL do seu Negócios');
+        alert('Please enter your business URL');
         return;
       }
 
@@ -501,19 +501,19 @@
       resultsDiv.style.display = 'block';
       resultsDiv.innerHTML = `
         <div class="rounded-xl border border-primary/30 bg-primary/10 text-primary p-4">
-          Auditoria em andamento para ${url}...
+          Running audit for ${url}...
         </div>
       `;
 
       setTimeout(() => {
         const score = Math.floor(Math.random() * 40) + 60;
         const issues = [
-          'Faltam citações de fontes confiáveis nos produtos',
-          'Schema markup não implementado',
-          'Headers não estão otimizados para perguntas',
+          'Missing citations from reliable sources in product pages',
+          'Schema markup not implemented',
+          'Headers are not optimized for questions',
           'FAQ section ausente ou incompleta',
-          'Descrições de produtos muito curtas (< 40 palavras)',
-          'Sem timestamps de atualização',
+          'Product descriptions are too short (< 40 words)',
+          'Missing update timestamps',
           'E-E-A-T signals fracos'
         ];
 
@@ -521,7 +521,7 @@
 
         resultsDiv.innerHTML = `
           <div class="rounded-xl border border-emerald-400/30 bg-emerald-500/10 text-emerald-400 p-4 mb-4">
-            Auditoria concluída com sucesso.
+            Audit completed successfully.
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-3 gap-3 mb-4">
@@ -530,16 +530,16 @@
               <p class="text-3xl font-bold text-primary">${score}</p>
             </div>
             <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-4 bg-white dark:bg-slate-900/40">
-              <p class="text-xs text-slate-500">Páginas Analisadas</p>
+              <p class="text-xs text-slate-500">Pages Analyzed</p>
               <p class="text-3xl font-bold">${Math.floor(Math.random() * 50) + 20}</p>
             </div>
             <div class="rounded-xl border border-slate-200 dark:border-slate-700 p-4 bg-white dark:bg-slate-900/40">
-              <p class="text-xs text-slate-500">Schema Encontrados</p>
+              <p class="text-xs text-slate-500">Schemas Found</p>
               <p class="text-3xl font-bold">${Math.floor(Math.random() * 3)}</p>
             </div>
           </div>
 
-          <h3 class="font-semibold mb-2">Principais Problemas Encontrados</h3>
+          <h3 class="font-semibold mb-2">Top Issues Found</h3>
           <ul class="space-y-2">
             ${randomIssues.map(issue => `<li class="p-3 rounded-lg border border-rose-400/30 bg-rose-500/10 text-sm">${issue}</li>`).join('')}
           </ul>
@@ -553,30 +553,30 @@
       const keywords = document.getElementById('contentKeywords').value;
 
       if (!title || !description) {
-        alert('Por favor, preencha todos os campos');
+        alert('Please fill in all fields');
         return;
       }
 
       const resultsDiv = document.getElementById('contentResults');
       resultsDiv.style.display = 'block';
       resultsDiv.innerHTML = `
-        <div class="rounded-xl border border-primary/30 bg-primary/10 text-primary p-4">Otimizando conteúdo para GEO...</div>
+        <div class="rounded-xl border border-primary/30 bg-primary/10 text-primary p-4">Optimizing content for GEO...</div>
       `;
 
       setTimeout(() => {
         resultsDiv.innerHTML = `
           <div class="rounded-xl border border-emerald-400/30 bg-emerald-500/10 text-emerald-400 p-4 mb-4">
-            Conteúdo otimizado seguindo as estratégias fundamentais.
+            Content optimized following core strategies.
           </div>
 
-          <h3 class="font-semibold mb-2">Título Otimizado</h3>
-          <div class="code-block"><strong>${title}</strong> - Reviews, Preços e Onde Comprar em 2026</div>
+          <h3 class="font-semibold mb-2">Optimized Title</h3>
+          <div class="code-block"><strong>${title}</strong> - Reviews, Prices e Onde Comprar em 2026</div>
 
-          <h3 class="font-semibold mb-2 mt-4">Descrição Otimizada (Answer-First)</h3>
+          <h3 class="font-semibold mb-2 mt-4">Optimized Description (Answer-First)</h3>
           <div class="code-block">
-            <p><strong>Resposta Direta (40-60 palavras):</strong></p>
-            <p>O ${title} é ${description.split(' ').slice(0, 15).join(' ')}... Segundo análise da Consumer Reports (2026), este modelo apresenta 98% de satisfação entre usuários.</p>
-            <p class="mt-3"><strong>Palavras-chave trabalhadas:</strong> ${keywords || 'não informado'}</p>
+            <p><strong>Direct Answer (40-60 words):</strong></p>
+            <p>The ${title} is ${description.split(' ').slice(0, 15).join(' ')}... According to Consumer Reports analysis (2026), this model shows 98% user satisfaction.</p>
+            <p class="mt-3"><strong>Optimized keywords:</strong> ${keywords || 'not provided'}</p>
           </div>
         `;
       }, 1000);
@@ -591,7 +591,7 @@
       const reviewCount = document.getElementById('schemaReviewCount').value;
 
       if (!productName || !price) {
-        alert('Por favor, preencha pelo menos o nome e preço do produto');
+        alert('Please fill in at least the product name and price');
         return;
       }
 
@@ -602,15 +602,15 @@
         "@context": "https://schema.org/",
         "@type": "Product",
         "name": productName,
-        "image": image || "https://exemplo.com/imagem.jpg",
-        "description": `Compre ${productName} com o melhor preço e condições`,
+        "image": image || "https://example.com/image.jpg",
+        "description": `Buy ${productName} at the best price and terms`,
         "brand": {
           "@type": "Brand",
-          "name": "Sua Marca"
+          "name": "Your Brand"
         },
         "offers": {
           "@type": "Offer",
-          "url": url || "https://seusite.com/produto",
+          "url": url || "https://yoursite.com/product",
           "priceCurrency": "BRL",
           "price": price,
           "availability": "https://schema.org/InStock",
@@ -629,18 +629,18 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": `Quanto custa o ${productName}?`,
+            "name": `How much does ${productName} cost?`,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": `O ${productName} custa R$ ${price} e está disponível em nossa loja online com condições especiais de pagamento.`
+              "text": `${productName} costs U$ ${price} and is available in our online store with special payment terms.`
             }
           },
           {
             "@type": "Question",
-            "name": `O ${productName} tem garantia?`,
+            "name": `Does ${productName} have a warranty?`,
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Sim, todos os nossos produtos possuem garantia de 12 meses do fabricante e suporte técnico especializado."
+              "text": "Yes, all our products include a 12-month manufacturer warranty and specialized technical support."
             }
           }
         ]
@@ -648,7 +648,7 @@
 
       resultsDiv.innerHTML = `
         <div class="rounded-xl border border-emerald-400/30 bg-emerald-500/10 text-emerald-400 p-4 mb-4">
-          Schema markup gerado com sucesso.
+          Schema markup generated successfully.
         </div>
 
         <h3 class="font-semibold mb-2">Product Schema</h3>
@@ -664,7 +664,7 @@
       const queries = document.getElementById('monitorQueries').value;
 
       if (!url) {
-        alert('Por favor, insira a URL para monitoramento');
+        alert('Please enter the monitoring URL');
         return;
       }
 
@@ -674,7 +674,7 @@
         overviews: Math.floor(Math.random() * 20) + 3,
         sov: Math.floor(Math.random() * 40) + 20,
         score: Math.floor(Math.random() * 30) + 65,
-        sentiment: ['Positivo', 'Neutro', 'Muito Positivo'][Math.floor(Math.random() * 3)]
+        sentiment: ['Positive', 'Neutral', 'Muito Positive'][Math.floor(Math.random() * 3)]
       };
 
       document.getElementById('metricChatGPT').textContent = metrics.chatgpt;
@@ -700,12 +700,12 @@
       });
 
       if (!content.trim()) {
-        alert('Nenhum schema disponível para cópia ainda.');
+        alert('No schema is available to copy yet.');
         return;
       }
 
       navigator.clipboard.writeText(content).then(() => {
-        alert('Schemas copiados para a área de transferência!');
+        alert('Schemas copied to clipboard!');
       });
     }
 

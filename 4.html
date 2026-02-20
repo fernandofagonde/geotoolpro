@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="pt-BR"><head>
+<html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Gerador de Dados Estruturados</title>
+<title>Structured Data Generator</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -53,7 +53,7 @@
 <div class="bg-primary/10 p-2 rounded-lg">
 <span class="material-symbols-outlined text-primary text-2xl">data_object</span>
 </div>
-<h1 class="text-lg font-bold tracking-tight">Gerador de Dados Estruturados</h1>
+<h1 class="text-lg font-bold tracking-tight">Structured Data Generator</h1>
 </div>
 <div class="flex items-center gap-2">
 <button class="p-2 text-slate-500 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">
@@ -69,17 +69,17 @@
 <div>
 <h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500 mb-4 flex items-center gap-2">
 <span class="material-symbols-outlined text-sm">settings</span>
-                        Configurações do Schema
+                        Schema Settings
                     </h2>
 <div class="space-y-4">
 <!-- Schema Type Selector -->
 <div class="flex flex-col gap-1.5">
-<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Tipo de Schema</label>
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Schema Type</label>
 <div class="relative">
 <select class="w-full appearance-none bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3 pr-10 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all">
-<option value="product">Product (Produto)</option>
+<option value="product">Product</option>
 <option value="faq">FAQ Page</option>
-<option value="review">Review (Avaliação)</option>
+<option value="review">Review</option>
 <option value="organization">Organization</option>
 </select>
 <span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">expand_more</span>
@@ -88,16 +88,16 @@
 <!-- Product Specific Inputs -->
 <div class="grid grid-cols-2 gap-4">
 <div class="flex flex-col gap-1.5">
-<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Preço</label>
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Price</label>
 <input class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" placeholder="Ex: 299.90" type="text" value="299.90"/>
 </div>
 <div class="flex flex-col gap-1.5">
-<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Moeda</label>
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Currency</label>
 <input class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" placeholder="BRL" type="text" value="BRL"/>
 </div>
 </div>
 <div class="flex flex-col gap-1.5">
-<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Disponibilidade</label>
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Availability</label>
 <select class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all">
 <option>InStock</option>
 <option>OutOfStock</option>
@@ -110,7 +110,7 @@
 <input class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" placeholder="Ex: PROD-001" type="text" value="SKU-99221"/>
 </div>
 <div class="flex flex-col gap-1.5">
-<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Avaliação (1-5)</label>
+<label class="text-sm font-medium text-slate-700 dark:text-slate-300">Rating (1-5)</label>
 <input class="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all" max="5" min="1" step="0.1" type="number" value="4.8"/>
 </div>
 </div>
@@ -120,11 +120,11 @@
 <div class="pt-4 space-y-3">
 <button class="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-4 rounded-lg flex items-center justify-center gap-2 transition-all shadow-lg shadow-primary/20">
 <span class="material-symbols-outlined">verified_user</span>
-                        Validar JSON-LD
+                        Validate JSON-LD
                     </button>
 <button class="w-full bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold py-4 rounded-lg flex items-center justify-center gap-2 transition-all">
 <span class="material-symbols-outlined">content_copy</span>
-                        Copiar Código
+                        Copy Code
                     </button>
 </div>
 </section>
@@ -153,7 +153,7 @@
   <span class="code-syntax-key">"@type"</span>: <span class="code-syntax-string">"Product"</span>,
   <span class="code-syntax-key">"name"</span>: <span class="code-syntax-string">"Smartphone Ultra Vision Z"</span>,
   <span class="code-syntax-key">"image"</span>: <span class="code-syntax-string">"https://example.com/photo.jpg"</span>,
-  <span class="code-syntax-key">"description"</span>: <span class="code-syntax-string">"O melhor smartphone para SEOs."</span>,
+  <span class="code-syntax-key">"description"</span>: <span class="code-syntax-string">"The best smartphone for SEOs."</span>,
   <span class="code-syntax-key">"sku"</span>: <span class="code-syntax-string">"SKU-99221"</span>,
   <span class="code-syntax-key">"offers"</span>: <span class="text-slate-400">{</span>
     <span class="code-syntax-key">"@type"</span>: <span class="code-syntax-string">"Offer"</span>,
@@ -179,15 +179,15 @@
 <div class="flex justify-around items-center max-w-md mx-auto">
 <a class="flex flex-col items-center gap-1 p-2 text-primary" href="#">
 <span class="material-symbols-outlined fill-1">edit_document</span>
-<span class="text-[10px] font-medium uppercase tracking-tighter">Gerador</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Generator</span>
 </a>
 <a class="flex flex-col items-center gap-1 p-2 text-slate-400" href="#">
 <span class="material-symbols-outlined">history</span>
-<span class="text-[10px] font-medium uppercase tracking-tighter">Histórico</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">History</span>
 </a>
 <a class="flex flex-col items-center gap-1 p-2 text-slate-400" href="#">
 <span class="material-symbols-outlined">settings</span>
-<span class="text-[10px] font-medium uppercase tracking-tighter">Ajustes</span>
+<span class="text-[10px] font-medium uppercase tracking-tighter">Settings</span>
 </a>
 </div>
 </nav>

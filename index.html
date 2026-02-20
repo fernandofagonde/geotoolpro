@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GeoToolPro | GEO para Negócios</title>
-  <meta name="description" content="GeoToolPro é a plataforma de Generative Engine Optimization para Negócioss aumentarem visibilidade em ChatGPT, Perplexity e AI Overviews." />
+  <title>GeoToolPro | GEO for Businesses</title>
+  <meta id="metaDescription" name="description" content="GeoToolPro is the Generative Engine Optimization platform for businesses to increase visibility on ChatGPT, Perplexity, and AI Overviews." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
@@ -100,6 +100,47 @@
 
     .nav a:hover {
       color: var(--text);
+    }
+
+    .lang-flags {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .lang-flag-btn {
+      background: #0d1822;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 5px;
+      line-height: 0;
+      cursor: pointer;
+      opacity: 0.75;
+      transition: opacity 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    .lang-flag-btn img {
+      width: 24px;
+      height: 16px;
+      object-fit: cover;
+      border-radius: 3px;
+      display: block;
+    }
+
+    .lang-flag-btn:hover {
+      opacity: 1;
+      transform: translateY(-1px);
+    }
+
+    .lang-flag-btn.active {
+      opacity: 1;
+      border-color: var(--primary);
+    }
+
+    .lang-flag-btn:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
     }
 
     .btn {
@@ -457,167 +498,397 @@
         <span class="logo-text">Geo<span>ToolPro</span></span>
       </a>
       <nav class="nav">
-        <a href="#recursos">Recursos</a>
-        <a href="#modulos">Módulos</a>
-        <a href="#pricing">Pricing</a>
-        <a href="#como-funciona">Como funciona</a>
+        <a href="#recursos" data-i18n-key="nav.features">Features</a>
+        <a href="#modulos" data-i18n-key="nav.modules">Modules</a>
+        <a href="#pricing" data-i18n-key="nav.pricing">Pricing</a>
+        <a href="#como-funciona" data-i18n-key="nav.howItWorks">How it works</a>
       </nav>
-      <a class="btn btn-primary" href="login.html">Abrir Plataforma</a>
+      <div class="lang-flags" aria-label="Language selector">
+        <button type="button" class="lang-flag-btn" data-lang="en" aria-label="English">
+          <img src="img/flag_us.png" alt="US flag" />
+        </button>
+        <button type="button" class="lang-flag-btn" data-lang="pt" aria-label="Portugues">
+          <img src="img/flag_br.png" alt="Brazil flag" />
+        </button>
+      </div>
+      <a class="btn btn-primary" href="login.html" data-i18n-key="nav.openPlatform">Open Platform</a>
     </div>
   </header>
 
   <main class="wrap">
     <section class="hero">
-      <span class="kicker reveal">GEO para Negócios em produção</span>
-      <h1 class="reveal d2">Aumente sua presença em respostas de IA com o GeoToolPro.</h1>
-      <p class="reveal d3">Audite sua loja, otimize descrições com estratégia answer-first, gere schema JSON-LD e acompanhe Share of Voice em ChatGPT, Perplexity e AI Overviews em um fluxo único.</p>
+      <span class="kicker reveal" data-i18n-key="hero.kicker">Production-ready GEO for businesses</span>
+      <h1 class="reveal d2" data-i18n-key="hero.title">Increase your presence in AI answers with GeoToolPro.</h1>
+      <p class="reveal d3" data-i18n-key="hero.subtitle">Audit your store, optimize descriptions with an answer-first strategy, generate JSON-LD schema, and track Share of Voice across ChatGPT, Perplexity, and AI Overviews in one workflow.</p>
       <div class="hero-cta reveal d3">
-        <a class="btn btn-primary" href="login.html">Começar agora</a>
-        <a class="btn btn-ghost" href="#modulos">Ver módulos</a>
+        <a class="btn btn-primary" href="login.html" data-i18n-key="hero.ctaStart">Start now</a>
+        <a class="btn btn-ghost" href="#modulos" data-i18n-key="hero.ctaModules">View modules</a>
       </div>
       <div class="metrics">
         <article class="metric reveal d2">
           <strong>+40%</strong>
-          <span>potencial de ganho em visibilidade GEO</span>
+          <span data-i18n-key="metrics.one">potential gain in GEO visibility</span>
         </article>
         <article class="metric reveal d3">
-          <strong>5 módulos</strong>
-          <span>auditoria, conteúdo, schema, monitoramento e FAQ</span>
+          <strong data-i18n-key="metrics.two.title">5 modules</strong>
+          <span data-i18n-key="metrics.two.text">audit, content, schema, monitoring, and FAQ</span>
         </article>
         <article class="metric reveal d3">
           <strong>&lt; 10 min</strong>
-          <span>para sair do diagnóstico ao plano de ação</span>
+          <span data-i18n-key="metrics.three">to go from diagnosis to action plan</span>
         </article>
       </div>
     </section>
 
     <section id="recursos">
       <div class="section-head">
-        <h2>Por que GeoToolPro</h2>
-        <p>Feito para times de growth, SEO e conteúdo de Negócios.</p>
+        <h2 data-i18n-key="why.title">Why GeoToolPro</h2>
+        <p data-i18n-key="why.subtitle">Built for growth, SEO, and content teams in businesses.</p>
       </div>
       <div class="grid-3">
         <article class="card">
           <span class="pill">GEO AUDIT</span>
-          <h3>Diagnóstico orientado a LLMs</h3>
-          <p>Identifique gaps de estrutura, autoridade, semântica e elementos que aumentam chance de citação em respostas de IA.</p>
+          <h3 data-i18n-key="why.card1.title">LLM-oriented diagnosis</h3>
+          <p data-i18n-key="why.card1.text">Identify gaps in structure, authority, semantics, and elements that increase your chances of being cited in AI answers.</p>
         </article>
         <article class="card">
           <span class="pill">ANSWER-FIRST</span>
-          <h3>Otimização pronta para consumo</h3>
-          <p>Transforme descrições de produto em blocos de resposta direta, com linguagem conversacional e foco em intenção.</p>
+          <h3 data-i18n-key="why.card2.title">Ready-to-use optimization</h3>
+          <p data-i18n-key="why.card2.text">Turn product descriptions into direct-answer blocks with conversational language and intent focus.</p>
         </article>
         <article class="card">
           <span class="pill">SCHEMA READY</span>
-          <h3>JSON-LD em poucos cliques</h3>
-          <p>Gere Product e FAQPage schema com validação rápida para melhorar interpretação semântica do seu catálogo.</p>
+          <h3 data-i18n-key="why.card3.title">JSON-LD in a few clicks</h3>
+          <p data-i18n-key="why.card3.text">Generate Product and FAQPage schema with quick validation to improve semantic interpretation of your catalog.</p>
         </article>
       </div>
     </section>
 
     <section id="modulos">
       <div class="section-head">
-        <h2>Módulos da plataforma</h2>
-        <p>Layout e fluxo pensados para operação contínua.</p>
+        <h2 data-i18n-key="modules.title">Platform modules</h2>
+        <p data-i18n-key="modules.subtitle">Layout and workflow designed for continuous operation.</p>
       </div>
       <div class="grid-3">
-        <article class="card"><h3>1. Dashboard GEO</h3><p>Métricas de presença, sentimento e share of voice em visualização consolidada.</p></article>
-        <article class="card"><h3>2. Auditoria IA</h3><p>Checklist técnico + recomendações prioritárias para corrigir gargalos de visibilidade.</p></article>
-        <article class="card"><h3>3. Otimizador</h3><p>Reescrita orientada por estratégia: citações, clareza semântica e estrutura em perguntas.</p></article>
-        <article class="card"><h3>4. Schema Builder</h3><p>Geração de dados estruturados para produtos e FAQs prontos para publicação.</p></article>
-        <article class="card"><h3>5. FAQ GEO</h3><p>Perguntas e respostas com intenção de busca, formato ideal para snippets de IA.</p></article>
-        <article class="card"><h3>Operação contínua</h3><p>Ciclo fechado: medir, corrigir, publicar e monitorar, sem trocar de ferramenta.</p></article>
+        <article class="card"><h3 data-i18n-key="modules.card1.title">1. GEO Dashboard</h3><p data-i18n-key="modules.card1.text">Visibility, sentiment, and share of voice metrics in a consolidated view.</p></article>
+        <article class="card"><h3 data-i18n-key="modules.card2.title">2. AI Audit</h3><p data-i18n-key="modules.card2.text">Technical checklist plus prioritized recommendations to fix visibility bottlenecks.</p></article>
+        <article class="card"><h3 data-i18n-key="modules.card3.title">3. Optimizer</h3><p data-i18n-key="modules.card3.text">Strategy-driven rewriting for citations, semantic clarity, and question-based structure.</p></article>
+        <article class="card"><h3 data-i18n-key="modules.card4.title">4. Schema Builder</h3><p data-i18n-key="modules.card4.text">Structured data generation for products and FAQs ready to publish.</p></article>
+        <article class="card"><h3 data-i18n-key="modules.card5.title">5. GEO FAQ</h3><p data-i18n-key="modules.card5.text">Questions and answers with search intent, ideal format for AI snippets.</p></article>
+        <article class="card"><h3 data-i18n-key="modules.card6.title">Continuous operation</h3><p data-i18n-key="modules.card6.text">Closed loop: measure, fix, publish, and monitor without switching tools.</p></article>
       </div>
     </section>
 
     <section id="pricing">
       <div class="section-head">
-        <h2>Pricing GEO Tool Pro</h2>
-        <p>3 planos estratégicos para cada estágio do seu Negócios.</p>
+        <h2 data-i18n-key="pricing.title">Pricing GEO Tool Pro</h2>
+        <p data-i18n-key="pricing.subtitle">3 strategic plans for each stage of your business.</p>
       </div>
       <div class="pricing-grid">
         <article class="pricing-card">
           <h3>Starter</h3>
-          <p class="pricing-for">Ideal para: Pequenos Negócioss começando com GEO</p>
+          <p class="pricing-for" data-i18n-key="pricing.starter.for">Ideal for: Small businesses getting started with GEO</p>
           <div class="price">
-            <strong>R$ 497/mês</strong>
-            <span>R$ 397/mês no anual</span>
+            <strong data-i18n-key="pricing.starter.price">U$ 497/month</strong>
+            <span data-i18n-key="pricing.starter.annual">U$ 397/month on annual billing</span>
           </div>
           <ul class="pricing-list">
-            <li>Auditoria GEO mensal (50 páginas)</li>
-            <li>2 produtos otimizados/mês</li>
-            <li>Monitoramento ChatGPT</li>
-            <li>Schema básico (Product + FAQ)</li>
-            <li>Suporte 48h</li>
+            <li data-i18n-key="pricing.starter.li1">Monthly GEO audit (50 pages)</li>
+            <li data-i18n-key="pricing.starter.li2">2 optimized products/month</li>
+            <li data-i18n-key="pricing.starter.li3">ChatGPT monitoring</li>
+            <li data-i18n-key="pricing.starter.li4">Basic schema (Product + FAQ)</li>
+            <li data-i18n-key="pricing.starter.li5">48h support</li>
           </ul>
-          <a class="btn btn-ghost" href="login.html">Escolher Starter</a>
+          <a class="btn btn-ghost" href="login.html" data-i18n-key="pricing.starter.cta">Choose Starter</a>
         </article>
 
         <article class="pricing-card popular">
-          <span class="pricing-badge">MAIS POPULAR</span>
+          <span class="pricing-badge" data-i18n-key="pricing.badge">MOST POPULAR</span>
           <h3>Professional</h3>
-          <p class="pricing-for">Ideal para: Negócioss em crescimento</p>
+          <p class="pricing-for" data-i18n-key="pricing.pro.for">Ideal for: Growing businesses</p>
           <div class="price">
-            <strong>R$ 997/mês</strong>
-            <span>R$ 797/mês no anual</span>
+            <strong data-i18n-key="pricing.pro.price">U$ 997/month</strong>
+            <span data-i18n-key="pricing.pro.annual">U$ 797/month on annual billing</span>
           </div>
           <ul class="pricing-list">
-            <li>Auditoria semanal (200 páginas)</li>
-            <li>20 produtos otimizados/mês</li>
-            <li>Monitoramento em 3 plataformas (ChatGPT + Perplexity + AI Overviews)</li>
-            <li>Share of Voice + análise de sentimento</li>
-            <li>100 queries customizadas</li>
-            <li>Consultoria 1h/mês</li>
-            <li>Suporte prioritário 4h</li>
+            <li data-i18n-key="pricing.pro.li1">Weekly audit (200 pages)</li>
+            <li data-i18n-key="pricing.pro.li2">20 optimized products/month</li>
+            <li data-i18n-key="pricing.pro.li3">Monitoring on 3 platforms (ChatGPT + Perplexity + AI Overviews)</li>
+            <li data-i18n-key="pricing.pro.li4">Share of Voice + sentiment analysis</li>
+            <li data-i18n-key="pricing.pro.li5">100 custom queries</li>
+            <li data-i18n-key="pricing.pro.li6">1h consulting/month</li>
+            <li data-i18n-key="pricing.pro.li7">Priority support in 4h</li>
           </ul>
-          <a class="btn btn-primary" href="login.html">Escolher Professional</a>
+          <a class="btn btn-primary" href="login.html" data-i18n-key="pricing.pro.cta">Choose Professional</a>
         </article>
 
         <article class="pricing-card">
           <h3>Enterprise</h3>
-          <p class="pricing-for">Ideal para: Grandes Negócioss e agências</p>
+          <p class="pricing-for" data-i18n-key="pricing.enterprise.for">Ideal for: Large businesses and agencies</p>
           <div class="price">
-            <strong>R$ 2.497/mês</strong>
-            <span>R$ 1.997/mês no anual</span>
+            <strong data-i18n-key="pricing.enterprise.price">U$ 2.497/month</strong>
+            <span data-i18n-key="pricing.enterprise.annual">U$ 1.997/month on annual billing</span>
           </div>
           <ul class="pricing-list">
-            <li>Auditoria diária (ilimitado)</li>
-            <li>Otimização ilimitada</li>
-            <li>Monitoramento em 5+ plataformas LLM</li>
-            <li>API completa</li>
-            <li>White-label para agências</li>
-            <li>Multi-domínios (10 sites)</li>
-            <li>Gerente de conta dedicado</li>
-            <li>Consultoria 4h/mês</li>
-            <li>Suporte 24/7</li>
+            <li data-i18n-key="pricing.enterprise.li1">Daily audit (unlimited)</li>
+            <li data-i18n-key="pricing.enterprise.li2">Unlimited optimization</li>
+            <li data-i18n-key="pricing.enterprise.li3">Monitoring on 5+ LLM platforms</li>
+            <li data-i18n-key="pricing.enterprise.li4">Full API</li>
+            <li data-i18n-key="pricing.enterprise.li5">White-label for agencies</li>
+            <li data-i18n-key="pricing.enterprise.li6">Multi-domain (10 sites)</li>
+            <li data-i18n-key="pricing.enterprise.li7">Dedicated account manager</li>
+            <li data-i18n-key="pricing.enterprise.li8">4h consulting/month</li>
+            <li data-i18n-key="pricing.enterprise.li9">24/7 support</li>
           </ul>
-          <a class="btn btn-ghost" href="login.html">Escolher Enterprise</a>
+          <a class="btn btn-ghost" href="login.html" data-i18n-key="pricing.enterprise.cta">Choose Enterprise</a>
         </article>
       </div>
     </section>
 
     <section id="como-funciona">
       <div class="section-head">
-        <h2>Como funciona</h2>
-        <p>Fluxo simples para sair da análise para execução.</p>
+        <h2 data-i18n-key="how.title">How it works</h2>
+        <p data-i18n-key="how.subtitle">Simple workflow to move from analysis to execution.</p>
       </div>
       <div class="steps">
-        <article class="step"><b>PASSO 01</b><p>Conecte a URL da loja e rode auditoria GEO.</p></article>
-        <article class="step"><b>PASSO 02</b><p>Otimize conteúdo com estratégia answer-first.</p></article>
-        <article class="step"><b>PASSO 03</b><p>Publique schemas de Product e FAQPage.</p></article>
-        <article class="step"><b>PASSO 04</b><p>Monitore citações e ajuste continuamente.</p></article>
+        <article class="step"><b data-i18n-key="how.step1.label">STEP 01</b><p data-i18n-key="how.step1.text">Connect your store URL and run a GEO audit.</p></article>
+        <article class="step"><b data-i18n-key="how.step2.label">STEP 02</b><p data-i18n-key="how.step2.text">Optimize content with an answer-first strategy.</p></article>
+        <article class="step"><b data-i18n-key="how.step3.label">STEP 03</b><p data-i18n-key="how.step3.text">Publish Product and FAQPage schema.</p></article>
+        <article class="step"><b data-i18n-key="how.step4.label">STEP 04</b><p data-i18n-key="how.step4.text">Monitor citations and iterate continuously.</p></article>
       </div>
 
       <div class="cta-block">
-        <h3>Pronto para levar seu Negócios para as respostas de IA?</h3>
-        <a class="btn btn-primary" href="login.html">Entrar no GeoToolPro</a>
+        <h3 data-i18n-key="how.ctaTitle">Ready to take your business into AI answers?</h3>
+        <a class="btn btn-primary" href="login.html" data-i18n-key="how.ctaButton">Enter GeoToolPro</a>
       </div>
     </section>
 
     <footer>
       <span>© 2026 GeoToolPro</span>
-      <span>Generative Engine Optimization para Negócios</span>
+      <span data-i18n-key="footer.tagline">Generative Engine Optimization for Businesses</span>
     </footer>
   </main>
+  <script>
+    (function () {
+      const translations = {
+        en: {
+          title: "GeoToolPro | GEO for Businesses",
+          metaDescription: "GeoToolPro is the Generative Engine Optimization platform for businesses to increase visibility on ChatGPT, Perplexity, and AI Overviews.",
+          "nav.features": "Features",
+          "nav.modules": "Modules",
+          "nav.pricing": "Pricing",
+          "nav.howItWorks": "How it works",
+          "nav.openPlatform": "Open Platform",
+          "hero.kicker": "Production-ready GEO for businesses",
+          "hero.title": "Increase your presence in AI answers with GeoToolPro.",
+          "hero.subtitle": "Audit your store, optimize descriptions with an answer-first strategy, generate JSON-LD schema, and track Share of Voice across ChatGPT, Perplexity, and AI Overviews in one workflow.",
+          "hero.ctaStart": "Start now",
+          "hero.ctaModules": "View modules",
+          "metrics.one": "potential gain in GEO visibility",
+          "metrics.two.title": "5 modules",
+          "metrics.two.text": "audit, content, schema, monitoring, and FAQ",
+          "metrics.three": "to go from diagnosis to action plan",
+          "why.title": "Why GeoToolPro",
+          "why.subtitle": "Built for growth, SEO, and content teams in businesses.",
+          "why.card1.title": "LLM-oriented diagnosis",
+          "why.card1.text": "Identify gaps in structure, authority, semantics, and elements that increase your chances of being cited in AI answers.",
+          "why.card2.title": "Ready-to-use optimization",
+          "why.card2.text": "Turn product descriptions into direct-answer blocks with conversational language and intent focus.",
+          "why.card3.title": "JSON-LD in a few clicks",
+          "why.card3.text": "Generate Product and FAQPage schema with quick validation to improve semantic interpretation of your catalog.",
+          "modules.title": "Platform modules",
+          "modules.subtitle": "Layout and workflow designed for continuous operation.",
+          "modules.card1.title": "1. GEO Dashboard",
+          "modules.card1.text": "Visibility, sentiment, and share of voice metrics in a consolidated view.",
+          "modules.card2.title": "2. AI Audit",
+          "modules.card2.text": "Technical checklist plus prioritized recommendations to fix visibility bottlenecks.",
+          "modules.card3.title": "3. Optimizer",
+          "modules.card3.text": "Strategy-driven rewriting for citations, semantic clarity, and question-based structure.",
+          "modules.card4.title": "4. Schema Builder",
+          "modules.card4.text": "Structured data generation for products and FAQs ready to publish.",
+          "modules.card5.title": "5. GEO FAQ",
+          "modules.card5.text": "Questions and answers with search intent, ideal format for AI snippets.",
+          "modules.card6.title": "Continuous operation",
+          "modules.card6.text": "Closed loop: measure, fix, publish, and monitor without switching tools.",
+          "pricing.title": "Pricing GEO Tool Pro",
+          "pricing.subtitle": "3 strategic plans for each stage of your business.",
+          "pricing.starter.for": "Ideal for: Small businesses getting started with GEO",
+          "pricing.starter.price": "U$ 497/month",
+          "pricing.starter.annual": "U$ 397/month on annual billing",
+          "pricing.starter.li1": "Monthly GEO audit (50 pages)",
+          "pricing.starter.li2": "2 optimized products/month",
+          "pricing.starter.li3": "ChatGPT monitoring",
+          "pricing.starter.li4": "Basic schema (Product + FAQ)",
+          "pricing.starter.li5": "48h support",
+          "pricing.starter.cta": "Choose Starter",
+          "pricing.badge": "MOST POPULAR",
+          "pricing.pro.for": "Ideal for: Growing businesses",
+          "pricing.pro.price": "U$ 997/month",
+          "pricing.pro.annual": "U$ 797/month on annual billing",
+          "pricing.pro.li1": "Weekly audit (200 pages)",
+          "pricing.pro.li2": "20 optimized products/month",
+          "pricing.pro.li3": "Monitoring on 3 platforms (ChatGPT + Perplexity + AI Overviews)",
+          "pricing.pro.li4": "Share of Voice + sentiment analysis",
+          "pricing.pro.li5": "100 custom queries",
+          "pricing.pro.li6": "1h consulting/month",
+          "pricing.pro.li7": "Priority support in 4h",
+          "pricing.pro.cta": "Choose Professional",
+          "pricing.enterprise.for": "Ideal for: Large businesses and agencies",
+          "pricing.enterprise.price": "U$ 2.497/month",
+          "pricing.enterprise.annual": "U$ 1.997/month on annual billing",
+          "pricing.enterprise.li1": "Daily audit (unlimited)",
+          "pricing.enterprise.li2": "Unlimited optimization",
+          "pricing.enterprise.li3": "Monitoring on 5+ LLM platforms",
+          "pricing.enterprise.li4": "Full API",
+          "pricing.enterprise.li5": "White-label for agencies",
+          "pricing.enterprise.li6": "Multi-domain (10 sites)",
+          "pricing.enterprise.li7": "Dedicated account manager",
+          "pricing.enterprise.li8": "4h consulting/month",
+          "pricing.enterprise.li9": "24/7 support",
+          "pricing.enterprise.cta": "Choose Enterprise",
+          "how.title": "How it works",
+          "how.subtitle": "Simple workflow to move from analysis to execution.",
+          "how.step1.label": "STEP 01",
+          "how.step1.text": "Connect your store URL and run a GEO audit.",
+          "how.step2.label": "STEP 02",
+          "how.step2.text": "Optimize content with an answer-first strategy.",
+          "how.step3.label": "STEP 03",
+          "how.step3.text": "Publish Product and FAQPage schema.",
+          "how.step4.label": "STEP 04",
+          "how.step4.text": "Monitor citations and iterate continuously.",
+          "how.ctaTitle": "Ready to take your business into AI answers?",
+          "how.ctaButton": "Enter GeoToolPro",
+          "footer.tagline": "Generative Engine Optimization for Businesses"
+        },
+        pt: {
+          title: "GeoToolPro | GEO para Negocios",
+          metaDescription: "GeoToolPro e a plataforma de Generative Engine Optimization para negocios aumentarem visibilidade em ChatGPT, Perplexity e AI Overviews.",
+          "nav.features": "Recursos",
+          "nav.modules": "Modulos",
+          "nav.pricing": "Precos",
+          "nav.howItWorks": "Como funciona",
+          "nav.openPlatform": "Abrir Plataforma",
+          "hero.kicker": "GEO para negocios em producao",
+          "hero.title": "Aumente sua presenca em respostas de IA com o GeoToolPro.",
+          "hero.subtitle": "Audite sua loja, otimize descricoes com estrategia answer-first, gere schema JSON-LD e acompanhe Share of Voice em ChatGPT, Perplexity e AI Overviews em um fluxo unico.",
+          "hero.ctaStart": "Comecar agora",
+          "hero.ctaModules": "Ver modulos",
+          "metrics.one": "potencial de ganho em visibilidade GEO",
+          "metrics.two.title": "5 modulos",
+          "metrics.two.text": "auditoria, conteudo, schema, monitoramento e FAQ",
+          "metrics.three": "para sair do diagnostico ao plano de acao",
+          "why.title": "Por que GeoToolPro",
+          "why.subtitle": "Feito para times de growth, SEO e conteudo de negocios.",
+          "why.card1.title": "Diagnostico orientado a LLMs",
+          "why.card1.text": "Identifique gaps de estrutura, autoridade, semantica e elementos que aumentam chance de citacao em respostas de IA.",
+          "why.card2.title": "Otimizacao pronta para consumo",
+          "why.card2.text": "Transforme descricoes de produto em blocos de resposta direta, com linguagem conversacional e foco em intencao.",
+          "why.card3.title": "JSON-LD em poucos cliques",
+          "why.card3.text": "Gere Product e FAQPage schema com validacao rapida para melhorar interpretacao semantica do seu catalogo.",
+          "modules.title": "Modulos da plataforma",
+          "modules.subtitle": "Layout e fluxo pensados para operacao continua.",
+          "modules.card1.title": "1. Dashboard GEO",
+          "modules.card1.text": "Metricas de presenca, sentimento e share of voice em visualizacao consolidada.",
+          "modules.card2.title": "2. Auditoria IA",
+          "modules.card2.text": "Checklist tecnico e recomendacoes prioritarias para corrigir gargalos de visibilidade.",
+          "modules.card3.title": "3. Otimizador",
+          "modules.card3.text": "Reescrita orientada por estrategia: citacoes, clareza semantica e estrutura em perguntas.",
+          "modules.card4.title": "4. Schema Builder",
+          "modules.card4.text": "Geracao de dados estruturados para produtos e FAQs prontos para publicacao.",
+          "modules.card5.title": "5. FAQ GEO",
+          "modules.card5.text": "Perguntas e respostas com intencao de busca, formato ideal para snippets de IA.",
+          "modules.card6.title": "Operacao continua",
+          "modules.card6.text": "Ciclo fechado: medir, corrigir, publicar e monitorar, sem trocar de ferramenta.",
+          "pricing.title": "Precos GEO Tool Pro",
+          "pricing.subtitle": "3 planos estrategicos para cada estagio do seu negocio.",
+          "pricing.starter.for": "Ideal para: Pequenos negocios comecando com GEO",
+          "pricing.starter.price": "R$ 497/mes",
+          "pricing.starter.annual": "R$ 397/mes no anual",
+          "pricing.starter.li1": "Auditoria GEO mensal (50 paginas)",
+          "pricing.starter.li2": "2 produtos otimizados/mes",
+          "pricing.starter.li3": "Monitoramento ChatGPT",
+          "pricing.starter.li4": "Schema basico (Product + FAQ)",
+          "pricing.starter.li5": "Suporte 48h",
+          "pricing.starter.cta": "Escolher Starter",
+          "pricing.badge": "MAIS POPULAR",
+          "pricing.pro.for": "Ideal para: Negocios em crescimento",
+          "pricing.pro.price": "R$ 997/mes",
+          "pricing.pro.annual": "R$ 797/mes no anual",
+          "pricing.pro.li1": "Auditoria semanal (200 paginas)",
+          "pricing.pro.li2": "20 produtos otimizados/mes",
+          "pricing.pro.li3": "Monitoramento em 3 plataformas (ChatGPT + Perplexity + AI Overviews)",
+          "pricing.pro.li4": "Share of Voice + analise de sentimento",
+          "pricing.pro.li5": "100 queries customizadas",
+          "pricing.pro.li6": "Consultoria 1h/mes",
+          "pricing.pro.li7": "Suporte prioritario 4h",
+          "pricing.pro.cta": "Escolher Professional",
+          "pricing.enterprise.for": "Ideal para: Grandes negocios e agencias",
+          "pricing.enterprise.price": "R$ 2.497/mes",
+          "pricing.enterprise.annual": "R$ 1.997/mes no anual",
+          "pricing.enterprise.li1": "Auditoria diaria (ilimitado)",
+          "pricing.enterprise.li2": "Otimizacao ilimitada",
+          "pricing.enterprise.li3": "Monitoramento em 5+ plataformas LLM",
+          "pricing.enterprise.li4": "API completa",
+          "pricing.enterprise.li5": "White-label para agencias",
+          "pricing.enterprise.li6": "Multi-dominios (10 sites)",
+          "pricing.enterprise.li7": "Gerente de conta dedicado",
+          "pricing.enterprise.li8": "Consultoria 4h/mes",
+          "pricing.enterprise.li9": "Suporte 24/7",
+          "pricing.enterprise.cta": "Escolher Enterprise",
+          "how.title": "Como funciona",
+          "how.subtitle": "Fluxo simples para sair da analise para execucao.",
+          "how.step1.label": "PASSO 01",
+          "how.step1.text": "Conecte a URL da loja e rode auditoria GEO.",
+          "how.step2.label": "PASSO 02",
+          "how.step2.text": "Otimize conteudo com estrategia answer-first.",
+          "how.step3.label": "PASSO 03",
+          "how.step3.text": "Publique schemas de Product e FAQPage.",
+          "how.step4.label": "PASSO 04",
+          "how.step4.text": "Monitore citacoes e ajuste continuamente.",
+          "how.ctaTitle": "Pronto para levar seu negocio para as respostas de IA?",
+          "how.ctaButton": "Entrar no GeoToolPro",
+          "footer.tagline": "Generative Engine Optimization para negocios"
+        }
+      };
+
+      function applyLanguage(lang) {
+        const selected = translations[lang] ? lang : "en";
+        const pack = translations[selected];
+        document.documentElement.lang = selected === "pt" ? "pt-BR" : "en";
+        document.title = pack.title;
+        const meta = document.getElementById("metaDescription");
+        if (meta) {
+          meta.setAttribute("content", pack.metaDescription);
+        }
+
+        document.querySelectorAll("[data-i18n-key]").forEach((node) => {
+          const key = node.getAttribute("data-i18n-key");
+          if (pack[key]) {
+            node.textContent = pack[key];
+          }
+        });
+
+        localStorage.setItem("geotoolpro-lang", selected);
+      }
+
+      const languageButtons = document.querySelectorAll(".lang-flag-btn");
+      const saved = localStorage.getItem("geotoolpro-lang");
+      const browserDefault = navigator.language && navigator.language.toLowerCase().startsWith("pt") ? "pt" : "en";
+      const initial = saved || browserDefault;
+      const resolvedInitial = translations[initial] ? initial : "en";
+      applyLanguage(resolvedInitial);
+
+      languageButtons.forEach((button) => {
+        button.classList.toggle("active", button.getAttribute("data-lang") === resolvedInitial);
+        button.addEventListener("click", function () {
+          const selectedLang = button.getAttribute("data-lang");
+          applyLanguage(selectedLang);
+          languageButtons.forEach((btn) => {
+            btn.classList.toggle("active", btn === button);
+          });
+        });
+      });
+    })();
+  </script>
 </body>
 </html>

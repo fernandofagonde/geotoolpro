@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 
-<html class="dark" lang="pt-BR"><head>
+<html class="dark" lang="en"><head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Gerador de FAQ (IA) - GEO Tool</title>
+<title>FAQ Generator (AI) - GEO Tool</title>
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
@@ -62,7 +62,7 @@
 <button class="p-2 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-full transition-colors">
 <span class="material-symbols-outlined block">arrow_back</span>
 </button>
-<h1 class="text-lg font-bold ml-2 flex-1 tracking-tight">Gerador de FAQ (IA)</h1>
+<h1 class="text-lg font-bold ml-2 flex-1 tracking-tight">FAQ Generator (AI)</h1>
 <button class="p-2 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-full transition-colors">
 <span class="material-symbols-outlined block text-primary">auto_awesome</span>
 </button>
@@ -73,40 +73,40 @@
 <section class="space-y-6 mb-8">
 <div class="space-y-4">
 <div class="flex flex-col gap-2">
-<label class="text-sm font-medium text-slate-600 dark:text-slate-400">Produto ou Tópico Principal</label>
+<label class="text-sm font-medium text-slate-600 dark:text-slate-400">Main Product or Topic</label>
 <input class="w-full h-14 px-4 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none" placeholder="Ex: Smartphone Ultra Vision Z" type="text"/>
 </div>
 <div class="flex flex-col gap-2">
-<label class="text-sm font-medium text-slate-600 dark:text-slate-400">Intenção de Busca</label>
+<label class="text-sm font-medium text-slate-600 dark:text-slate-400">Search Intent</label>
 <select class="w-full h-14 px-4 rounded-lg border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none">
-<option value="informativa">Informativa (O que é, como funciona)</option>
-<option value="transacional">Transacional (Preço, onde comprar)</option>
-<option value="comparativa">Comparativa (A vs B, melhor custo-benefício)</option>
+<option value="informativa">Informational (What it is, how it works)</option>
+<option value="transacional">Transactional (Price, where to buy)</option>
+<option value="comparativa">Comparative (A vs B, best cost-benefit)</option>
 </select>
 </div>
 </div>
 <button class="w-full bg-primary hover:bg-primary/90 text-white font-bold h-14 rounded-lg transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
 <span class="material-symbols-outlined">bolt</span>
-                Gerar Perguntas Sugeridas
+                Generate Suggested Questions
             </button>
 </section>
 <!-- Results Section -->
 <section class="space-y-4">
 <div class="flex items-center justify-between mb-2 px-1">
-<h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Resultados Otimizados (GEO)</h2>
-<span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded font-medium">3 Sugestões</span>
+<h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500">Optimized Results (GEO)</h2>
+<span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded font-medium">3 Suggestions</span>
 </div>
 <!-- FAQ Item 1 -->
 <div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 space-y-3">
 <div class="flex gap-3">
 <span class="text-primary mt-1 font-bold">Q:</span>
-<h3 class="font-bold text-slate-800 dark:text-slate-100 leading-snug">O Smartphone Ultra Vision Z é bom para fotos noturnas?</h3>
+<h3 class="font-bold text-slate-800 dark:text-slate-100 leading-snug">Is the Ultra Vision Z smartphone good for night photos?</h3>
 </div>
 <div class="flex gap-3 pl-1 border-l-2 border-primary/30">
 <div class="flex-1">
 <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-<strong class="text-slate-900 dark:text-white">Sim, o Ultra Vision Z é excelente para fotografia noturna.</strong> 
-                            Ele utiliza um sensor Pro-Dark de 1 polegada combinado com processamento neural, garantindo 40% mais brilho e redução de ruído em ambientes de baixa luminosidade comparado ao modelo anterior.
+<strong class="text-slate-900 dark:text-white">Yes, the Ultra Vision Z is excellent for night photography.</strong> 
+                            It uses a 1-inch Pro-Dark sensor combined with neural processing, delivering 40% more brightness and noise reduction in low-light environments compared to the previous model.
                         </p>
 </div>
 </div>
@@ -115,13 +115,13 @@
 <div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 space-y-3">
 <div class="flex gap-3">
 <span class="text-primary mt-1 font-bold">Q:</span>
-<h3 class="font-bold text-slate-800 dark:text-slate-100 leading-snug">Qual a duração da bateria do Ultra Vision Z em uso intenso?</h3>
+<h3 class="font-bold text-slate-800 dark:text-slate-100 leading-snug">How long does the Ultra Vision Z battery last under heavy usage?</h3>
 </div>
 <div class="flex gap-3 pl-1 border-l-2 border-primary/30">
 <div class="flex-1">
 <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-<strong class="text-slate-900 dark:text-white">A bateria dura aproximadamente 14 horas em uso intenso.</strong>
-                            Com 5.500 mAh e carregamento ultrarrápido de 120W, o dispositivo atinge 100% de carga em apenas 19 minutos, ideal para usuários heavy-user.
+<strong class="text-slate-900 dark:text-white">The battery lasts about 14 hours under heavy usage.</strong>
+                            With 5,500 mAh and ultra-fast 120W charging, the device reaches 100% charge in just 19 minutes, ideal for heavy users.
                         </p>
 </div>
 </div>
@@ -130,13 +130,13 @@
 <div class="p-5 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/50 space-y-3">
 <div class="flex gap-3">
 <span class="text-primary mt-1 font-bold">Q:</span>
-<h3 class="font-bold text-slate-800 dark:text-slate-100 leading-snug">O Ultra Vision Z suporta tecnologia 5G no Brasil?</h3>
+<h3 class="font-bold text-slate-800 dark:text-slate-100 leading-snug">Does the Ultra Vision Z support 5G in Brazil?</h3>
 </div>
 <div class="flex gap-3 pl-1 border-l-2 border-primary/30">
 <div class="flex-1">
 <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-<strong class="text-slate-900 dark:text-white">Sim, o Ultra Vision Z é totalmente compatível com o 5G brasileiro.</strong>
-                            Ele suporta todas as bandas nacionais (n1, n3, n7, n28 e n78), garantindo a máxima velocidade de conexão em todas as operadoras do país.
+<strong class="text-slate-900 dark:text-white">Yes, the Ultra Vision Z is fully compatible with Brazilian 5G.</strong>
+                            It supports all national bands (n1, n3, n7, n28, and n78), ensuring maximum connection speed across all local carriers.
                         </p>
 </div>
 </div>
@@ -149,7 +149,7 @@
                 </button>
 <button class="flex items-center justify-center gap-2 h-12 rounded-lg bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-100 font-semibold hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors">
 <span class="material-symbols-outlined text-sm">add_to_drive</span>
-                    Adicionar ao Site
+                    Add to Site
                 </button>
 </div>
 </section>
@@ -163,11 +163,11 @@
 </a>
 <a class="flex flex-1 flex-col items-center justify-center gap-1 py-1 text-slate-500 dark:text-[#9ca6ba] hover:text-primary transition-colors" href="#">
 <span class="material-symbols-outlined">search_check</span>
-<span class="text-[10px] font-medium uppercase tracking-tight">Auditoria</span>
+<span class="text-[10px] font-medium uppercase tracking-tight">Audit</span>
 </a>
 <a class="flex flex-1 flex-col items-center justify-center gap-1 py-1 text-slate-500 dark:text-[#9ca6ba] hover:text-primary transition-colors" href="#">
 <span class="material-symbols-outlined">auto_fix_high</span>
-<span class="text-[10px] font-medium uppercase tracking-tight">Otimizador</span>
+<span class="text-[10px] font-medium uppercase tracking-tight">Optimizer</span>
 </a>
 <a class="flex flex-1 flex-col items-center justify-center gap-1 py-1 text-primary active-nav-item" href="#">
 <span class="material-symbols-outlined">quiz</span>
