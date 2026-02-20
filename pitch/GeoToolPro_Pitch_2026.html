@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GeoToolPro — Pitch Deck 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+/* ─── TOKENS ─────────────────────────────────────────────── */
+:root {
+  --bg:     #070B14;
+  --bg2:    #0D1424;
+  --bg3:    #111B2E;
+  --ink:    #E8EDF5;
+  --muted:  #5B6B8A;
+  --dim:    #8496B4;
+  --indigo: #6366F1;
+  --violet: #8B5CF6;
+  --cyan:   #06B6D4;
+  --green:  #10B981;
+  --amber:  #F59E0B;
+  --red:    #EF4444;
+  --border: rgba(99,102,241,0.18);
+  --glow:   rgba(99,102,241,0.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  width: 100%; height: 100%;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'DM Sans', sans-serif;
+  overflow: hidden;
+  cursor: default;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── DECK SHELL ─────────────────────────────────────────── */
+.deck {
+  width: 100vw; height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 56px 72px 44px;
+  opacity: 0;
+  transform: translateX(60px);
+  transition: opacity .48s cubic-bezier(.4,0,.2,1), transform .48s cubic-bezier(.4,0,.2,1);
+  pointer-events: none;
+  overflow: hidden;
+}
+.slide.active {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+}
+.slide.exit {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity .32s ease, transform .32s ease;
+}
+
+/* ─── NOISE TEXTURE ──────────────────────────────────────── */
+.slide::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ─── SHARED LAYOUT ──────────────────────────────────────── */
+.slide-inner {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ─── NAV BAR ────────────────────────────────────────────── */
+.nav {
+  position: fixed;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(13,20,36,.92);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(16px);
+  border-radius: 40px;
+  padding: 8px 20px;
+}
+.nav-btn {
+  background: none;
+  border: none;
+  color: var(--dim);
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  transition: color .2s, background .2s;
+  font-family: inherit;
+  line-height: 1;
+}
+.nav-btn:hover { color: var(--ink); background: var(--glow); }
+.nav-counter {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  color: var(--muted);
+  min-width: 48px;
+  text-align: center;
+  letter-spacing: .05em;
+}
+.nav-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--muted);
+  cursor: pointer;
+  transition: all .25s;
+  border: none;
+  flex-shrink: 0;
+}
+.nav-dot.active { background: var(--indigo); transform: scale(1.4); }
+.nav-dot:hover { background: var(--dim); }
+
+/* ─── SLIDE LABEL ────────────────────────────────────────── */
+.slide-label {
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .15em;
+  color: var(--indigo);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.slide-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--border), transparent);
+  max-width: 160px;
+}
+
+/* ─── TYPOGRAPHY ─────────────────────────────────────────── */
+.display { font-family: 'Syne', sans-serif; font-weight: 800; line-height: 1.02; }
+.heading  { font-family: 'Syne', sans-serif; font-weight: 700; line-height: 1.1; }
+.mono     { font-family: 'DM Mono', monospace; }
+
+h1.display { font-size: clamp(48px, 6vw, 82px); }
+h2.heading { font-size: clamp(28px, 3.2vw, 44px); }
+h3 { font-family: 'Syne', sans-serif; font-weight: 600; font-size: 18px; color: var(--ink); margin-bottom: 6px; }
+p  { font-size: 15px; line-height: 1.7; color: var(--dim); }
+strong { color: var(--ink); font-weight: 500; }
+
+.grad-text {
+  background: linear-gradient(135deg, var(--indigo) 0%, var(--cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.accent { color: var(--cyan); }
+.muted  { color: var(--muted); }
+
+/* ─── GRID UTILITIES ─────────────────────────────────────── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+.grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 14px; }
+.col    { display: flex; flex-direction: column; }
+
+/* ─── CARD ───────────────────────────────────────────────── */
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 22px 24px;
+  transition: border-color .2s;
+}
+.card:hover { border-color: rgba(99,102,241,.4); }
+.card-sm { padding: 14px 18px; border-radius: 10px; }
+
+/* ─── STAT BLOCK ─────────────────────────────────────────── */
+.stat-val {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(30px, 4vw, 52px);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.stat-label {
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+}
+
+/* ─── TAG ────────────────────────────────────────────────── */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .05em;
+  padding: 4px 10px;
+  border-radius: 20px;
+  border: 1px solid;
+}
+.tag-indigo { color: var(--indigo); border-color: rgba(99,102,241,.3); background: rgba(99,102,241,.08); }
+.tag-cyan   { color: var(--cyan);   border-color: rgba(6,182,212,.3);  background: rgba(6,182,212,.08);  }
+.tag-green  { color: var(--green);  border-color: rgba(16,185,129,.3); background: rgba(16,185,129,.08); }
+.tag-amber  { color: var(--amber);  border-color: rgba(245,158,11,.3); background: rgba(245,158,11,.08); }
+
+/* ─── CHECK LIST ─────────────────────────────────────────── */
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--dim);
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,.04);
+}
+.check-item:last-child { border-bottom: none; }
+.check-icon { color: var(--green); flex-shrink: 0; margin-top: 2px; font-size: 15px; }
+
+/* ─── TABLE ──────────────────────────────────────────────── */
+.data-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.data-table th {
+  text-align: left;
+  padding: 10px 14px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--border);
+  font-weight: 400;
+}
+.data-table td {
+  padding: 11px 14px;
+  color: var(--dim);
+  border-bottom: 1px solid rgba(255,255,255,.04);
+  vertical-align: middle;
+}
+.data-table tr:last-child td { border-bottom: none; }
+.data-table tbody tr:hover td { background: rgba(99,102,241,.04); color: var(--ink); }
+.td-hi { color: var(--ink); font-weight: 500; }
+.td-val { font-family: 'DM Mono', monospace; color: var(--cyan); }
+.td-check { color: var(--green); text-align: center; }
+.td-cross { color: var(--muted); text-align: center; }
+.td-partial { color: var(--amber); text-align: center; font-size: 11px; }
+
+/* ─── PROGRESS BAR ───────────────────────────────────────── */
+.progress-bar-track {
+  height: 6px;
+  background: var(--bg3);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 1s cubic-bezier(.4,0,.2,1);
+}
+
+/* ─── PHASE ROW ──────────────────────────────────────────── */
+.phase-row {
+  display: flex;
+  gap: 12px;
+}
+.phase-block {
+  flex: 1;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+.phase-head {
+  padding: 12px 16px;
+  font-family: 'DM Mono', monospace;
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.phase-body { padding: 14px 16px; }
+.phase-item {
+  font-size: 12px;
+  color: var(--dim);
+  padding: 4px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 7px;
+}
+.phase-dot { width: 5px; height: 5px; border-radius: 50%; flex-shrink: 0; margin-top: 5px; }
+
+/* ─── MARKET RING ────────────────────────────────────────── */
+.market-rings {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  flex-shrink: 0;
+  margin: auto 0;
+}
+.ring {
+  position: absolute;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+.ring-tam {
+  width: 100%; height: 100%;
+  top: 0; left: 0;
+  border: 2px solid rgba(99,102,241,.25);
+  background: radial-gradient(ellipse, rgba(99,102,241,.06) 0%, transparent 70%);
+}
+.ring-sam {
+  width: 68%; height: 68%;
+  top: 16%; left: 16%;
+  border: 2px solid rgba(6,182,212,.3);
+  background: radial-gradient(ellipse, rgba(6,182,212,.08) 0%, transparent 70%);
+}
+.ring-som {
+  width: 36%; height: 36%;
+  top: 32%; left: 32%;
+  border: 2px solid rgba(16,185,129,.4);
+  background: radial-gradient(ellipse, rgba(16,185,129,.14) 0%, transparent 70%);
+}
+.ring-label {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 22px;
+  line-height: 1;
+}
+.ring-sub {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin-top: 3px;
+}
+
+/* ─── GLOWING ORBS ───────────────────────────────────────── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(80px);
+  opacity: .18;
+}
+
+/* ─── TIMELINE ───────────────────────────────────────────── */
+.timeline-row {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  position: relative;
+}
+.timeline-row::before {
+  content: '';
+  position: absolute;
+  left: 15px;
+  top: 28px;
+  bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+.tl-item {
+  display: flex;
+  gap: 16px;
+  padding-bottom: 20px;
+}
+.tl-dot-col { display: flex; flex-direction: column; align-items: center; }
+.tl-dot {
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  border: 2px solid;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 11px;
+  font-weight: 500;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+  background: var(--bg);
+}
+.tl-line { flex: 1; width: 1px; background: var(--border); margin: 4px 0; }
+
+/* ─── SPECIFIC SLIDES ────────────────────────────────────── */
+
+/* 1. COVER */
+#s0 {
+  background: radial-gradient(ellipse 80% 60% at 70% 40%, rgba(99,102,241,.12) 0%, transparent 65%),
+              radial-gradient(ellipse 60% 60% at 20% 80%, rgba(6,182,212,.07) 0%, transparent 60%),
+              var(--bg);
+  justify-content: center;
+}
+#s0 .tag-row { display: flex; gap: 8px; margin-bottom: 32px; flex-wrap: wrap; }
+#s0 h1 { margin-bottom: 18px; }
+#s0 .sub { font-size: 19px; color: var(--dim); line-height: 1.5; max-width: 560px; margin-bottom: 40px; }
+#s0 .url-chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'DM Mono', monospace; font-size: 13px;
+  color: var(--cyan); border: 1px solid rgba(6,182,212,.3);
+  padding: 8px 18px; border-radius: 99px;
+  background: rgba(6,182,212,.06);
+}
+#s0 .grid-stats {
+  display: flex; gap: 32px; margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+#s0 .corner-grid {
+  position: absolute;
+  right: -20px; top: -20px;
+  width: 340px; height: 340px;
+  background-image:
+    linear-gradient(rgba(99,102,241,.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99,102,241,.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  border-radius: 12px;
+  opacity: .5;
+  transform: rotate(12deg);
+}
+
+/* 7. MVP scroll */
+#s6 .slide-inner { overflow-y: auto; }
+#s6 .slide-inner::-webkit-scrollbar { width: 4px; }
+#s6 .slide-inner::-webkit-scrollbar-track { background: transparent; }
+#s6 .slide-inner::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+
+/* CLOSING */
+#s8 {
+  background: radial-gradient(ellipse 80% 70% at 50% 50%, rgba(99,102,241,.15) 0%, transparent 65%), var(--bg);
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+#s8 .big-word { font-size: clamp(60px, 10vw, 120px); line-height: .9; }
+#s8 .contact-row { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 32px; }
+#s8 .contact-chip {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: 'DM Mono', monospace; font-size: 13px;
+  color: var(--ink); border: 1px solid var(--border);
+  padding: 12px 24px; border-radius: 12px;
+  background: var(--bg2);
+  transition: border-color .2s, background .2s;
+}
+#s8 .contact-chip:hover { border-color: var(--indigo); background: var(--glow); }
+
+/* ─── ANIMATIONS ─────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(16px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+.animate { opacity:0; }
+.slide.active .animate { animation: fadeUp .5s forwards; }
+.slide.active .animate:nth-child(1) { animation-delay: .05s; }
+.slide.active .animate:nth-child(2) { animation-delay: .12s; }
+.slide.active .animate:nth-child(3) { animation-delay: .19s; }
+.slide.active .animate:nth-child(4) { animation-delay: .26s; }
+.slide.active .animate:nth-child(5) { animation-delay: .33s; }
+.slide.active .animate:nth-child(6) { animation-delay: .40s; }
+.slide.active .animate:nth-child(7) { animation-delay: .47s; }
+
+@keyframes pulse-ring {
+  0%, 100% { opacity: .18; transform: scale(1); }
+  50%       { opacity: .28; transform: scale(1.02); }
+}
+.ring-tam { animation: pulse-ring 6s ease-in-out infinite; }
+.ring-sam { animation: pulse-ring 5s ease-in-out infinite 1s; }
+.ring-som { animation: pulse-ring 4s ease-in-out infinite 2s; }
+
+/* ─── SCROLLBAR GLOBAL ───────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+
+/* responsive */
+@media (max-height: 700px) {
+  .slide { padding: 36px 52px 36px; }
+  h2.heading { font-size: 28px; }
+}
+</style>
+</head>
+<body>
+
+<div class="deck" id="deck">
+
+  <!-- ─── SLIDE 0: COVER ──────────────────────────────────── -->
+  <div class="slide active" id="s0">
+    <div class="orb" style="width:500px;height:500px;background:var(--indigo);top:-100px;right:-80px;"></div>
+    <div class="orb" style="width:300px;height:300px;background:var(--cyan);bottom:-60px;left:60px;opacity:.1"></div>
+    <div class="corner-grid"></div>
+    <div class="slide-inner">
+      <div class="tag-row animate">
+        <span class="tag tag-indigo">Pitch Deck 2026</span>
+        <span class="tag tag-cyan">Pre-Seed Round</span>
+        <span class="tag tag-green">GEO SaaS</span>
+      </div>
+      <h1 class="display animate">
+        <span class="grad-text">GeoToolPro</span>
+      </h1>
+      <p class="sub animate">The command center for AI search visibility.<br>Track, analyze, and optimize your brand inside ChatGPT, Perplexity, and Google AI Overviews.</p>
+      <div class="animate">
+        <span class="url-chip">🌐 geotoolpro.com</span>
+      </div>
+      <div class="grid-stats animate">
+        <div>
+          <div class="stat-val grad-text">$80B+</div>
+          <div class="stat-label">Total Market</div>
+        </div>
+        <div style="width:1px;background:var(--border)"></div>
+        <div>
+          <div class="stat-val" style="color:var(--cyan)">1B+</div>
+          <div class="stat-label">ChatGPT Daily Queries</div>
+        </div>
+        <div style="width:1px;background:var(--border)"></div>
+        <div>
+          <div class="stat-val" style="color:var(--green)">25%</div>
+          <div class="stat-label">Search Volume Drop by 2026</div>
+        </div>
+        <div style="width:1px;background:var(--border)"></div>
+        <div>
+          <div class="stat-val" style="color:var(--amber)">40%</div>
+          <div class="stat-label">GEO Visibility Boost</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SLIDE 1: PROBLEM ────────────────────────────────── -->
+  <div class="slide" id="s1">
+    <div class="orb" style="width:400px;height:400px;background:var(--red);top:-100px;right:-60px;opacity:.1"></div>
+    <div class="slide-inner">
+      <div class="slide-label animate">01 · Problem</div>
+      <h2 class="heading animate" style="margin-bottom:24px">The search paradigm<br><span class="grad-text">is breaking.</span></h2>
+      <div class="grid-2 animate" style="gap:14px;flex:1">
+        <div class="col" style="gap:14px">
+          <div class="card">
+            <div style="font-size:28px;margin-bottom:10px">📉</div>
+            <h3>Traffic is disappearing</h3>
+            <p>Gartner predicts <strong>25% drop in traditional search volume by 2026</strong>. ChatGPT already surpassed Bing. 80% of users answer 40% of queries without clicking a single link.</p>
+          </div>
+          <div class="card">
+            <div style="font-size:28px;margin-bottom:10px">👻</div>
+            <h3>Brands are invisible to AI</h3>
+            <p><strong>82.5% of AI Overview citations</strong> go to deep content pages brands don't even track. Most companies have zero visibility into whether they're being recommended — or ignored.</p>
+          </div>
+        </div>
+        <div class="col" style="gap:14px">
+          <div class="card">
+            <div style="font-size:28px;margin-bottom:10px">🔧</div>
+            <h3>No tools were built for this</h3>
+            <p>Semrush, Ahrefs, Moz — all built for Google's algorithm. <strong>None track citations in ChatGPT, Perplexity, or Gemini.</strong> The category gap is wide open.</p>
+          </div>
+          <div class="card" style="border-color:rgba(99,102,241,.35);background:rgba(99,102,241,.06)">
+            <div class="mono" style="font-size:12px;color:var(--muted);margin-bottom:10px">THE OPPORTUNITY</div>
+            <p style="color:var(--dim);font-size:14px;line-height:1.7">Empresas já reportam <strong style="color:var(--cyan)">25% de novos leads vindos do ChatGPT</strong> — mas não sabem como medir ou escalar isso. The tool that solves this owns the category.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SLIDE 2: SOLUTION ───────────────────────────────── -->
+  <div class="slide" id="s2">
+    <div class="orb" style="width:500px;height:400px;background:var(--indigo);bottom:-80px;right:-60px;opacity:.12"></div>
+    <div class="slide-inner">
+      <div class="slide-label animate">02 · Solution</div>
+      <h2 class="heading animate" style="margin-bottom:8px">Your <span class="grad-text">GEO command center</span><br>for AI search visibility.</h2>
+      <p class="animate" style="margin-bottom:24px;max-width:640px">GeoToolPro tracks, analyzes, and optimizes your brand's presence inside the AI engines that now answer <strong>1 billion queries a day</strong>.</p>
+      <div class="grid-3 animate" style="flex:1;grid-template-rows:1fr 1fr">
+        <div class="card card-sm">
+          <div style="color:var(--indigo);font-size:22px;margin-bottom:8px">📡</div>
+          <h3 style="font-size:14px">AI Brand Monitor</h3>
+          <p style="font-size:12px">Daily tracking across ChatGPT, Perplexity, Google AI Overviews & Gemini.</p>
+        </div>
+        <div class="card card-sm">
+          <div style="color:var(--cyan);font-size:22px;margin-bottom:8px">🏆</div>
+          <h3 style="font-size:14px">GEO Score™</h3>
+          <p style="font-size:12px">Proprietary visibility score benchmarked vs. competitors in real-time.</p>
+        </div>
+        <div class="card card-sm">
+          <div style="color:var(--violet);font-size:22px;margin-bottom:8px">🔬</div>
+          <h3 style="font-size:14px">Prompt Testing Lab</h3>
+          <p style="font-size:12px">Test 200+ queries and see exactly who gets cited — and why.</p>
+        </div>
+        <div class="card card-sm">
+          <div style="color:var(--green);font-size:22px;margin-bottom:8px">⚡</div>
+          <h3 style="font-size:14px">Optimization Engine</h3>
+          <p style="font-size:12px">AI-generated recommendations: schema, content structure, citations.</p>
+        </div>
+        <div class="card card-sm">
+          <div style="color:var(--amber);font-size:22px;margin-bottom:8px">📊</div>
+          <h3 style="font-size:14px">Share of Voice</h3>
+          <p style="font-size:12px">Real-time competitive intelligence across all major LLM platforms.</p>
+        </div>
+        <div class="card card-sm">
+          <div style="color:var(--red);font-size:22px;margin-bottom:8px">🔔</div>
+          <h3 style="font-size:14px">Alerts & Reports</h3>
+          <p style="font-size:12px">Automated weekly digests with actionable next steps for your team.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SLIDE 3: MARKET (TAM/SAM/SOM) ──────────────────── -->
+  <div class="slide" id="s3">
+    <div class="slide-inner">
+      <div class="slide-label animate">03 · Market Opportunity</div>
+      <h2 class="heading animate" style="margin-bottom:20px">TAM · SAM · SOM</h2>
+      <div class="animate" style="display:flex;gap:40px;flex:1;align-items:center">
+
+        <!-- Ring diagram -->
+        <div class="market-rings" style="flex-shrink:0">
+          <div class="ring ring-tam" style="display:flex;align-items:flex-start;justify-content:center;padding-top:18px">
+            <div>
+              <div class="ring-label" style="color:var(--indigo)">$80B+</div>
+              <div class="ring-sub" style="color:var(--muted)">TAM</div>
+            </div>
+          </div>
+          <div class="ring ring-sam" style="display:flex;align-items:flex-start;justify-content:center;padding-top:16px">
+            <div>
+              <div class="ring-label" style="color:var(--cyan);font-size:18px">$12B</div>
+              <div class="ring-sub" style="color:var(--muted)">SAM</div>
+            </div>
+          </div>
+          <div class="ring ring-som" style="display:flex;align-items:center;justify-content:center">
+            <div style="text-align:center">
+              <div class="ring-label" style="color:var(--green);font-size:13px">$480M</div>
+              <div class="ring-sub" style="color:var(--muted);font-size:8px">SOM</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Breakdown cards -->
+        <div class="col" style="gap:14px;flex:1">
+          <div class="card" style="border-color:rgba(99,102,241,.35)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <span class="tag tag-indigo">TAM</span>
+              <span class="stat-val" style="font-size:28px;color:var(--indigo)">$80B+</span>
+            </div>
+            <p style="font-size:13px">Convergence of the <strong>$65B SEO software market</strong> (Grand View Research) and the <strong>$18.5B AI search market</strong> growing to $66.2B by 2035 (Future Market Insights). Every company that does content marketing is a potential customer.</p>
+          </div>
+          <div class="card" style="border-color:rgba(6,182,212,.3)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <span class="tag tag-cyan">SAM</span>
+              <span class="stat-val" style="font-size:28px;color:var(--cyan)">$12B</span>
+            </div>
+            <p style="font-size:13px"><strong>~15% of the SEO market</strong> that is actively investing in AI search readiness — digital agencies, in-house SEO teams, content-led SaaS brands, and e-commerce operators.</p>
+          </div>
+          <div class="card" style="border-color:rgba(16,185,129,.35)">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+              <span class="tag tag-green">SOM (Yr 1–3)</span>
+              <span class="stat-val" style="font-size:28px;color:var(--green)">$480M</span>
+            </div>
+            <p style="font-size:13px"><strong>~4% of SAM</strong> — English-speaking SMBs and digital agencies who are already tool-savvy buyers. Reachable via PLG, agency partnerships, and SEO community channels.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SLIDE 4: STRATEGY ───────────────────────────────── -->
+  <div class="slide" id="s4">
+    <div class="orb" style="width:360px;height:360px;background:var(--violet);top:-80px;left:-60px;opacity:.1"></div>
+    <div class="slide-inner">
+      <div class="slide-label animate">04 · Go-To-Market Strategy</div>
+      <h2 class="heading animate" style="margin-bottom:20px">Land & expand<br><span class="grad-text">in three phases.</span></h2>
+      <div class="grid-3 animate" style="margin-bottom:20px">
+        <div class="card" style="border-top:3px solid var(--muted)">
+          <div class="tag tag-indigo" style="margin-bottom:12px">Phase 1 · Months 1–6</div>
+          <h3>🌱 Seed</h3>
+          <p style="margin:8px 0 12px">Product-market fit with SEO agencies & freelancers who already understand why this matters.</p>
+          <div class="stat-val" style="font-size:24px;color:var(--ink)">500</div>
+          <div class="stat-label">Target paid users</div>
+        </div>
+        <div class="card" style="border-top:3px solid var(--indigo)">
+          <div class="tag tag-cyan" style="margin-bottom:12px">Phase 2 · Months 7–18</div>
+          <h3>🚀 Growth</h3>
+          <p style="margin:8px 0 12px">Channel expansion into SMBs with content teams and e-commerce brands feeling the search shift.</p>
+          <div class="stat-val" style="font-size:24px;color:var(--ink)">5,000</div>
+          <div class="stat-label">Target paid users</div>
+        </div>
+        <div class="card" style="border-top:3px solid var(--cyan)">
+          <div class="tag tag-green" style="margin-bottom:12px">Phase 3 · Months 19–36</div>
+          <h3>🏢 Scale</h3>
+          <p style="margin:8px 0 12px">Enterprise tier & vertical expansion. White-label for agencies at scale. International rollout.</p>
+          <div class="stat-val" style="font-size:24px;color:var(--ink)">20,000</div>
+          <div class="stat-label">Target paid users</div>
+        </div>
+      </div>
+      <div class="grid-2 animate" style="gap:14px">
+        <div class="card card-sm" style="display:flex;gap:14px;align-items:flex-start">
+          <span style="font-size:22px">🔄</span>
+          <div><h3 style="font-size:13px">Product-Led Growth</h3><p style="font-size:12px">Free tier with 5 prompts/day drives organic adoption. Upgrade friction fires at the exact moment of insight.</p></div>
+        </div>
+        <div class="card card-sm" style="display:flex;gap:14px;align-items:flex-start">
+          <span style="font-size:22px">🤝</span>
+          <div><h3 style="font-size:13px">Agency White-Label Program</h3><p style="font-size:12px">Revenue share model lets agencies resell GeoToolPro to clients, creating a built-in distribution army.</p></div>
+        </div>
+        <div class="card card-sm" style="display:flex;gap:14px;align-items:flex-start">
+          <span style="font-size:22px">📝</span>
+          <div><h3 style="font-size:13px">Original GEO Research</h3><p style="font-size:12px">Publishing research LLMs cite makes GeoToolPro itself a GEO success story — the best product demo possible.</p></div>
+        </div>
+        <div class="card card-sm" style="display:flex;gap:14px;align-items:flex-start">
+          <span style="font-size:22px">🌐</span>
+          <div><h3 style="font-size:13px">Community & SEO Network</h3><p style="font-size:12px">Active presence in r/SEO, LinkedIn GEO groups, and industry podcasts where early adopters already live.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SLIDE 5: COMPETITION ────────────────────────────── -->
+  <div class="slide" id="s5">
+    <div class="slide-inner">
+      <div class="slide-label animate">05 · Competitive Landscape</div>
+      <h2 class="heading animate" style="margin-bottom:6px">The gap no one<br><span class="grad-text">has filled — until now.</span></h2>
+      <p class="animate" style="margin-bottom:18px;max-width:560px">Existing SEO platforms were built for Google's algorithm. None were architected for the fundamentally different signals that drive AI citation.</p>
+      <div class="animate" style="flex:1;overflow:auto">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Platform</th>
+              <th style="text-align:center">ChatGPT Track</th>
+              <th style="text-align:center">Perplexity Track</th>
+              <th style="text-align:center">GEO Optimizer</th>
+              <th style="text-align:center">Prompt Lab</th>
+              <th style="text-align:center">AI Share of Voice</th>
+              <th>Price/mo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:rgba(99,102,241,.07)">
+              <td class="td-hi">⭐ GeoToolPro</td>
+              <td class="td-check">✔</td>
+              <td class="td-check">✔</td>
+              <td class="td-check">✔</td>
+              <td class="td-check">✔</td>
+              <td class="td-check">✔</td>
+              <td class="td-val">$49–$499</td>
+            </tr>
+            <tr>
+              <td>Semrush</td>
+              <td class="td-partial">Partial</td>
+              <td class="td-cross">✗</td>
+              <td class="td-cross">✗</td>
+              <td class="td-cross">✗</td>
+              <td class="td-cross">✗</td>
+              <td class="td-val">$129+</td>
+            </tr>
+            <tr>
+              <td>Ahrefs</td>
+              <td class="td-partial">Brand Radar</td>
+              <td class="td-cross">✗</td>
+              <td class="td-cross">✗</td>
+              <td class="td-cross">✗</td>
+              <td class="td-cross">✗</td>
+              <td class="td-val">$99+</td>
+            </tr>
+            <tr>
+              <td>Morningscore</td>
+              <td class="td-partial">Weekly only</td>
+              <td class="td-cross">✗</td>
+              <td class="td-cross">✗</td>
+              <td class="td-cross">✗</td>
+              <td class="td-cross">✗</td>
+              <td class="td-val">$49+</td>
+            </tr>
+            <tr>
+              <td>Vaylis</td>
+              <td class="td-check">✔</td>
+              <td class="td-check">✔</td>
+              <td class="td-cross">✗</td>
+              <td class="td-cross">✗</td>
+              <td class="td-partial">Partial</td>
+              <td class="td-val">€49+</td>
+            </tr>
+            <tr>
+              <td>Profound / Hall</td>
+              <td class="td-check">✔</td>
+              <td class="td-partial">Partial</td>
+              <td class="td-cross">✗</td>
+              <td class="td-cross">✗</td>
+              <td class="td-cross">✗</td>
+              <td class="td-val">Custom</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="grid-2 animate" style="gap:12px;margin-top:16px">
+        <div class="card card-sm" style="border-color:rgba(99,102,241,.3)">
+          <h3 style="font-size:13px;color:var(--indigo)">🏆 GEO Score™ Algorithm</h3>
+          <p style="font-size:12px">Combines citation frequency, sentiment, accuracy, share of voice & freshness — a dataset competitors cannot replicate fast.</p>
+        </div>
+        <div class="card card-sm" style="border-color:rgba(6,182,212,.3)">
+          <h3 style="font-size:13px;color:var(--cyan)">🧲 Network Effects</h3>
+          <p style="font-size:12px">As more agencies use GeoToolPro, comparative intelligence improves for everyone. Data moat compounds over time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SLIDE 6: PRICING ────────────────────────────────── -->
+  <div class="slide" id="s6a">
+    <div class="slide-inner">
+      <div class="slide-label animate">06 · Business Model & Pricing</div>
+      <h2 class="heading animate" style="margin-bottom:6px">Freemium → SaaS<br><span class="grad-text">→ Enterprise.</span></h2>
+      <p class="animate" style="margin-bottom:18px">SaaS subscription with a freemium entry point. Agency white-label for high-value recurring contracts.</p>
+      <div class="grid-4 animate" style="margin-bottom:18px">
+        <div class="card" style="border-top:3px solid var(--muted)">
+          <div class="mono" style="font-size:10px;color:var(--muted);margin-bottom:8px">FREE</div>
+          <div class="stat-val" style="font-size:24px;color:var(--dim)">$0</div>
+          <div style="margin-top:12px;display:flex;flex-direction:column;gap:5px">
+            <div class="check-item"><span class="check-icon">✔</span>3 AI platforms</div>
+            <div class="check-item"><span class="check-icon">✔</span>5 prompts/day</div>
+            <div class="check-item" style="color:var(--muted)"><span style="color:var(--muted)">–</span> No optimizer</div>
+          </div>
+        </div>
+        <div class="card" style="border-top:3px solid var(--indigo)">
+          <div class="mono" style="font-size:10px;color:var(--indigo);margin-bottom:8px">STARTER</div>
+          <div class="stat-val" style="font-size:24px;color:var(--ink)">$49<span style="font-size:14px;color:var(--muted)">/mo</span></div>
+          <div style="margin-top:12px;display:flex;flex-direction:column;gap:5px">
+            <div class="check-item"><span class="check-icon">✔</span>All 4 platforms</div>
+            <div class="check-item"><span class="check-icon">✔</span>50 prompts/day</div>
+            <div class="check-item"><span class="check-icon">✔</span>2 competitors</div>
+          </div>
+        </div>
+        <div class="card" style="border-top:3px solid var(--cyan);background:rgba(99,102,241,.06)">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div class="mono" style="font-size:10px;color:var(--cyan);margin-bottom:8px">PRO ⭐</div>
+          </div>
+          <div class="stat-val" style="font-size:24px;color:var(--ink)">$149<span style="font-size:14px;color:var(--muted)">/mo</span></div>
+          <div style="margin-top:12px;display:flex;flex-direction:column;gap:5px">
+            <div class="check-item"><span class="check-icon">✔</span>200 prompts/day</div>
+            <div class="check-item"><span class="check-icon">✔</span>10 competitors</div>
+            <div class="check-item"><span class="check-icon">✔</span>Optimization Engine</div>
+          </div>
+        </div>
+        <div class="card" style="border-top:3px solid var(--green)">
+          <div class="mono" style="font-size:10px;color:var(--green);margin-bottom:8px">AGENCY</div>
+          <div class="stat-val" style="font-size:24px;color:var(--ink)">$499<span style="font-size:14px;color:var(--muted)">/mo</span></div>
+          <div style="margin-top:12px;display:flex;flex-direction:column;gap:5px">
+            <div class="check-item"><span class="check-icon">✔</span>Unlimited prompts</div>
+            <div class="check-item"><span class="check-icon">✔</span>White-label reports</div>
+            <div class="check-item"><span class="check-icon">✔</span>API + dedicated CSM</div>
+          </div>
+        </div>
+      </div>
+      <div class="card animate" style="background:var(--bg3)">
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px">
+          <div style="display:flex;gap:32px">
+            <div><div class="stat-val" style="font-size:26px;color:var(--green)">$390K</div><div class="stat-label">Year 1 ARR · 500 users</div></div>
+            <div style="width:1px;background:var(--border)"></div>
+            <div><div class="stat-val" style="font-size:26px;color:var(--cyan)">$3.4M</div><div class="stat-label">Year 2 ARR · 3,500 users</div></div>
+            <div style="width:1px;background:var(--border)"></div>
+            <div><div class="stat-val" style="font-size:26px;color:var(--indigo)">$13.7M</div><div class="stat-label">Year 3 ARR · 12,000 users</div></div>
+          </div>
+          <span class="tag tag-green" style="font-size:12px">Avg ARPU $65–$95/mo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SLIDE 7: MVP ROADMAP ────────────────────────────── -->
+  <div class="slide" id="s7">
+    <div class="slide-inner" style="overflow-y:auto">
+      <div class="slide-label animate">07 · MVP Roadmap</div>
+      <h2 class="heading animate" style="margin-bottom:6px">Track → Understand<br><span class="grad-text">→ Optimize → Measure.</span></h2>
+      <p class="animate" style="margin-bottom:20px">Four phases. One goal: ship the GEO loop that proves people will pay to be visible in AI.</p>
+      <div class="phase-row animate" style="margin-bottom:16px">
+        <div class="phase-block">
+          <div class="phase-head" style="background:var(--bg3);color:var(--muted)">Phase 0 · Wks 1–4 · Foundation</div>
+          <div class="phase-body">
+            <div class="phase-item"><div class="phase-dot" style="background:var(--muted)"></div>Infra & auth setup</div>
+            <div class="phase-item"><div class="phase-dot" style="background:var(--muted)"></div>DB schema design</div>
+            <div class="phase-item"><div class="phase-dot" style="background:var(--muted)"></div>LLM API integrations</div>
+            <div class="phase-item"><div class="phase-dot" style="background:var(--muted)"></div>CI/CD pipeline</div>
+            <div class="phase-item"><div class="phase-dot" style="background:var(--muted)"></div>Landing page live</div>
+          </div>
+        </div>
+        <div class="phase-block">
+          <div class="phase-head" style="background:rgba(99,102,241,.18);color:var(--indigo)">Phase 1 · Wks 5–12 · Core MVP</div>
+          <div class="phase-body">
+            <div class="phase-item"><div class="phase-dot" style="background:var(--indigo)"></div>Brand Monitor dashboard</div>
+            <div class="phase-item"><div class="phase-dot" style="background:var(--indigo)"></div>ChatGPT + Perplexity tracking</div>
+            <div class="phase-item"><div class="phase-dot" style="background:var(--indigo)"></div>GEO Score™ v1 algorithm</div>
+            <div class="phase-item"><div class="phase-dot" style="background:var(--indigo)"></div>Competitor comparison (×2)</div>
+            <div class="phase-item"><div class="phase-dot" style="background:var(--indigo)"></div>Weekly email digest</div>
+            <div class="phase-item"><div class="phase-dot" style="background:var(--indigo)"></div>Freemium onboarding flow</div>
+          </div>
+        </div>
+        <div class="phase-block">
+          <div class="phase-head" style="background:rgba(6,182,212,.14);color:var(--cyan)">Phase 2 · Wks 13–24 · Growth</div>
+          <div class="phase-body">
+            <div class="phase-item"><div class="phase-dot" style="background:var(--cyan)"></div>AI Overviews + Gemini</div>
+            <div class="phase-item"><div class="phase-dot" style="background:var(--cyan)"></div>Prompt Testing Lab (50)</div>
+            <div class="phase-item"><div class="phase-dot" style="background:var(--cyan)"></div>Optimization Engine v1</div>
+            <div class="phase-item"><div class="phase-dot" style="background:var(--cyan)"></div>Schema validator tool</div>
+            <div class="phase-item"><div class="phase-dot" style="background:var(--cyan)"></div>Agency white-label v1</div>
+            <div class="phase-item"><div class="phase-dot" style="background:var(--cyan)"></div>API (read-only)</div>
+          </div>
+        </div>
+        <div class="phase-block">
+          <div class="phase-head" style="background:rgba(16,185,129,.14);color:var(--green)">Phase 3 · Wks 25–40 · Scale</div>
+          <div class="phase-body">
+            <div class="phase-item"><div class="phase-dot" style="background:var(--green)"></div>Unlimited prompt tracking</div>
+            <div class="phase-item"><div class="phase-dot" style="background:var(--green)"></div>GEO Score™ v2 (ML-powered)</div>
+            <div class="phase-item"><div class="phase-dot" style="background:var(--green)"></div>Content brief generator</div>
+            <div class="phase-item"><div class="phase-dot" style="background:var(--green)"></div>Looker Studio connector</div>
+            <div class="phase-item"><div class="phase-dot" style="background:var(--green)"></div>Slack / Teams integration</div>
+            <div class="phase-item"><div class="phase-dot" style="background:var(--green)"></div>Enterprise SSO + billing</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Success metrics -->
+      <div class="animate" style="margin-top:4px">
+        <div class="mono" style="font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Phase 1 Exit Criteria</div>
+        <div class="grid-4" style="gap:10px">
+          <div class="card card-sm" style="text-align:center">
+            <div class="stat-val" style="font-size:22px;color:var(--indigo)">50+</div>
+            <div class="stat-label" style="margin-top:4px">Paying users Wk 12</div>
+          </div>
+          <div class="card card-sm" style="text-align:center">
+            <div class="stat-val" style="font-size:22px;color:var(--cyan)">40%</div>
+            <div class="stat-label" style="margin-top:4px">WAU / signups</div>
+          </div>
+          <div class="card card-sm" style="text-align:center">
+            <div class="stat-val" style="font-size:22px;color:var(--green)">45+</div>
+            <div class="stat-label" style="margin-top:4px">NPS at Day 30</div>
+          </div>
+          <div class="card card-sm" style="text-align:center">
+            <div class="stat-val" style="font-size:22px;color:var(--amber)">&lt;8%</div>
+            <div class="stat-label" style="margin-top:4px">Monthly churn</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SLIDE 8: THE ASK ────────────────────────────────── -->
+  <div class="slide" id="s8a">
+    <div class="orb" style="width:400px;height:400px;background:var(--green);bottom:-100px;right:-80px;opacity:.1"></div>
+    <div class="slide-inner">
+      <div class="slide-label animate">08 · The Ask</div>
+      <h2 class="heading animate" style="margin-bottom:20px">Raising <span class="grad-text">$750K pre-seed</span><br>to reach 500 paying users.</h2>
+      <div class="grid-2 animate" style="flex:1;gap:20px">
+        <div class="col" style="gap:14px">
+          <div class="card">
+            <div class="mono" style="font-size:10px;color:var(--muted);margin-bottom:12px;letter-spacing:.1em">USE OF FUNDS</div>
+            <div style="display:flex;flex-direction:column;gap:12px">
+              <div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+                  <span style="font-size:13px;color:var(--ink)">Product & Engineering (2 FTEs)</span>
+                  <span class="mono" style="font-size:12px;color:var(--indigo)">48% · $360K</span>
+                </div>
+                <div class="progress-bar-track"><div class="progress-bar-fill" style="width:48%;background:var(--indigo)"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+                  <span style="font-size:13px;color:var(--ink)">Sales & Marketing</span>
+                  <span class="mono" style="font-size:12px;color:var(--cyan)">25% · $188K</span>
+                </div>
+                <div class="progress-bar-track"><div class="progress-bar-fill" style="width:25%;background:var(--cyan)"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+                  <span style="font-size:13px;color:var(--ink)">Infrastructure & LLM API</span>
+                  <span class="mono" style="font-size:12px;color:var(--green)">15% · $113K</span>
+                </div>
+                <div class="progress-bar-track"><div class="progress-bar-fill" style="width:15%;background:var(--green)"></div></div>
+              </div>
+              <div>
+                <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+                  <span style="font-size:13px;color:var(--ink)">Operations & Legal</span>
+                  <span class="mono" style="font-size:12px;color:var(--amber)">12% · $90K</span>
+                </div>
+                <div class="progress-bar-track"><div class="progress-bar-fill" style="width:12%;background:var(--amber)"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="card card-sm" style="border-color:rgba(16,185,129,.3)">
+            <div class="mono" style="font-size:10px;color:var(--green);margin-bottom:8px">12-MONTH MILESTONES</div>
+            <div class="check-item"><span class="check-icon">✔</span>500 paying users validated</div>
+            <div class="check-item"><span class="check-icon">✔</span>Agency white-label live</div>
+            <div class="check-item"><span class="check-icon">✔</span>$390K ARR run rate</div>
+            <div class="check-item"><span class="check-icon">✔</span>Data for $3M Series A</div>
+          </div>
+        </div>
+        <div class="col" style="gap:14px">
+          <div class="card">
+            <div class="mono" style="font-size:10px;color:var(--muted);margin-bottom:12px;letter-spacing:.1em">EARLY TRACTION</div>
+            <div class="check-item"><span class="check-icon">✔</span><span>geotoolpro.com live with waitlist</span></div>
+            <div class="check-item"><span class="check-icon">✔</span><span>Core LLM tracking engine prototype validated</span></div>
+            <div class="check-item"><span class="check-icon">✔</span><span>GEO Score™ v0.1 producing reproducible rankings</span></div>
+            <div class="check-item"><span class="check-icon">✔</span><span>Letters of Intent from <strong>3 digital agencies</strong></span></div>
+            <div class="check-item"><span class="check-icon">✔</span><span>Original GEO research paper in draft</span></div>
+            <div class="check-item"><span class="check-icon">✔</span><span><strong>280+ newsletter subscribers</strong> acquired organically</span></div>
+          </div>
+          <div class="card card-sm" style="background:rgba(99,102,241,.07);border-color:rgba(99,102,241,.35)">
+            <p style="font-size:13px;line-height:1.7;font-style:italic;color:var(--dim)">"O futuro da busca é generativo. Marcas que dominarem GEO em 2026 terão vantagem competitiva insuperável quando AI search se tornar mainstream."</p>
+            <p style="font-size:11px;color:var(--muted);margin-top:8px">— GEO Guia Completo 2026</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── SLIDE 9: CLOSING ────────────────────────────────── -->
+  <div class="slide" id="s9">
+    <div class="orb" style="width:600px;height:600px;background:var(--indigo);top:50%;left:50%;transform:translate(-50%,-50%);opacity:.14"></div>
+    <div class="orb" style="width:300px;height:300px;background:var(--cyan);top:20%;right:10%;opacity:.08"></div>
+    <div class="slide-inner" style="justify-content:center;align-items:center;text-align:center">
+      <div class="animate">
+        <div class="mono" style="font-size:11px;letter-spacing:.2em;color:var(--muted);margin-bottom:16px;text-transform:uppercase">The window is open.</div>
+        <div class="display big-word" style="font-size:clamp(52px,9vw,110px);line-height:.9;margin-bottom:24px">
+          <span class="grad-text">Own the</span><br>AI search<br>era.
+        </div>
+        <p style="font-size:16px;max-width:480px;margin:0 auto 32px;color:var(--dim);line-height:1.7">
+          AI search is reshaping how 1 billion people find answers daily. <strong>GeoToolPro</strong> is the command center brands need to win that future.
+        </p>
+      </div>
+      <div class="contact-row animate">
+        <div class="contact-chip">🌐 geotoolpro.com</div>
+        <div class="contact-chip">📧 hello@geotoolpro.com</div>
+        <div class="contact-chip" style="color:var(--indigo)">💰 Raising $750K pre-seed</div>
+      </div>
+      <div style="margin-top:28px" class="animate">
+        <span class="tag tag-indigo">GeoToolPro · 2026</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /deck -->
+
+<!-- ─── NAV ────────────────────────────────────────────────── -->
+<nav class="nav" id="nav">
+  <button class="nav-btn" id="prevBtn" onclick="go(-1)" title="Previous (←)">‹</button>
+  <div id="dots"></div>
+  <span class="nav-counter" id="counter">1 / 10</span>
+  <button class="nav-btn" id="nextBtn" onclick="go(1)" title="Next (→ or Space)">›</button>
+</nav>
+
+<script>
+const slides = Array.from(document.querySelectorAll('.slide'));
+const dotsEl = document.getElementById('dots');
+const counter = document.getElementById('counter');
+let cur = 0;
+
+// Build dots
+slides.forEach((_, i) => {
+  const d = document.createElement('button');
+  d.className = 'nav-dot' + (i === 0 ? ' active' : '');
+  d.setAttribute('aria-label', `Slide ${i+1}`);
+  d.onclick = () => goTo(i);
+  dotsEl.appendChild(d);
+});
+
+function goTo(n) {
+  if (n < 0 || n >= slides.length) return;
+  slides[cur].classList.remove('active');
+  slides[cur].classList.add('exit');
+  setTimeout(() => slides[cur].classList.remove('exit'), 350);
+  cur = n;
+  slides[cur].classList.add('active');
+  document.querySelectorAll('.nav-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === cur);
+  });
+  counter.textContent = `${cur + 1} / ${slides.length}`;
+}
+
+function go(dir) { goTo(cur + dir); }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); go(1); }
+  if (e.key === 'ArrowLeft')  { e.preventDefault(); go(-1); }
+  if (e.key === 'Home') goTo(0);
+  if (e.key === 'End')  goTo(slides.length - 1);
+});
+
+// Touch swipe
+let tx = 0;
+document.addEventListener('touchstart', e => { tx = e.touches[0].clientX; });
+document.addEventListener('touchend', e => {
+  const dx = tx - e.changedTouches[0].clientX;
+  if (Math.abs(dx) > 50) go(dx > 0 ? 1 : -1);
+});
+</script>
+</body>
+</html>
